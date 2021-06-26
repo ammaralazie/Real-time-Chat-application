@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  border: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* end of ipad mixin */
+/* end of mobile */
+/* container */
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: 10px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* wepper */
+}
+.container .wepper {
+  width: 60%;
+  min-height: 400px;
+  background: #eeeeee;
+  box-shadow: 0px 0px 128px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: relative;
+}
+@media screen and (max-width: 411px) {
+  .container .wepper {
+    width: 80%;
+  }
+}
+
+/* end of container */
+/* end of ipad mixin */
+/* end of mobile */
+.login form[method=post] {
+  display: flex;
+  align-items: center;
+}
+
+/* login */
+.login {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 5px;
+  /* fom */
+  /* end form */
+}
+.login form[method=post] {
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* inputs */
+  /* end of inputs */
+  /* font awesome */
+  /* font awesome */
+  /* button */
+  /* end of button */
+}
+.login form[method=post] input {
+  width: 60%;
+  height: 40px;
+  color: #313131;
+  box-shadow: 1px 1px 2px #313131;
+  border-radius: 3px;
+  padding: 0 10px;
+}
+.login form[method=post] input:focus {
+  outline: 1px solid #21bd5d;
+}
+.login form[method=post] input:not(:last-child) {
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 1024px) {
+  .login form[method=post] input {
+    width: 80%;
+  }
+}
+.login form[method=post] .fa-eye {
+  position: absolute;
+  right: 55px;
+  top: 3px;
+  transform: translate(-122px, 155px);
+  cursor: pointer;
+  color: #313131;
+}
+@media screen and (max-width: 1024px) {
+  .login form[method=post] .fa-eye {
+    right: 70px;
+    transform: none;
+    transform: translateY(155px);
+  }
+}
+@media screen and (max-width: 411px) {
+  .login form[method=post] .fa-eye {
+    right: 40px;
+  }
+}
+.login form[method=post] button {
+  width: 40%;
+  height: 40px;
+  background: #313131;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.login form[method=post] button:hover {
+  background: #000;
+}
+
+/* end of ligon */
+
+/*# sourceMappingURL=style.css.map */

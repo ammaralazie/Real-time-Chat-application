@@ -1,0 +1,99 @@
+@import '_color';
+@import '_main';
+@import '_container';
+@import '_mobile';
+
+
+%flex{
+    display: flex;
+    align-items: center;
+}
+
+
+/* login */
+.login{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 5px;
+
+    /* fom */
+    form[method=post]{
+        @extend %flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        /* inputs */
+        input{
+            width: 60%;
+            height: 40px;
+            color: $dark;
+            box-shadow: 1px 1px 2px $dark;
+            border-radius: 3px;
+            padding: 0 10px;
+            &:focus{
+                outline:1px solid $green ;
+            }
+            &:not(:first-child){
+                margin-top: 10px;
+            }
+            @include ipad{
+                width: 80%;
+            }
+        }
+        /* end of inputs */
+
+        /* font awesome */
+        .fa-eye{
+            position: absolute;
+            right: 55px;
+            top: 3px;
+            transform: translate(-122px,155px);
+            cursor: pointer;
+            color: rgb(49 49 49);
+            @include ipad{
+                right: 70px;
+                transform: none;
+                transform: translateY(155px);
+            }
+            @include mobile{
+               right: 40px;;
+            }
+        }
+        /* font awesome */
+
+        /* button */
+        button{
+            width: 40%;
+            height: 40px;
+            background: $dark;
+            color: $light;
+            cursor: pointer;
+            border-radius: 3px;
+            margin-top: 30px;
+            &:hover{
+                background: #000;
+            }
+        }
+        /* end of button */
+
+        /* STRONG */
+        strong{
+            font-size: 11px;
+            color: rgb(189, 42, 16);
+            @include mobile{
+                font-size: 8px;
+            }
+        }
+        /* END OF STRONG */
+
+    }
+    /* end form */
+}
+/* end of ligon */
+
+
+
