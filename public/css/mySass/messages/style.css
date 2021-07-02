@@ -1,0 +1,233 @@
+/* end of ipad mixin */
+/* end of mobile */
+/* container */
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: 10px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* wepper */
+}
+.container .wepper {
+  width: 60%;
+  min-height: 400px;
+  background: #eeeeee;
+  box-shadow: 0px 0px 128px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: relative;
+  padding: 10px;
+}
+@media screen and (max-width: 411px) {
+  .container .wepper {
+    width: 80%;
+  }
+}
+
+/* end of container */
+* {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  border: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* end of ipad mixin */
+/* end of mobile */
+.list-users a .card .icon-user div, .list-users a .card .icon-user, .list-users a .card, .my-icon .left-side div .nick-name, .my-icon .left-side div, .my-icon .left-side .fa-arrow-left, .my-icon .left-side, .my-icon {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .container .wepper {
+    width: 100%;
+    padding: 0;
+    min-height: 100vh;
+  }
+}
+
+.my-icon {
+  width: 100%;
+  border-bottom: 1px solid #313131;
+  justify-content: space-between;
+  background: white;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 5px;
+  /* left side */
+  /* //left side */
+  /* right side */
+  /* // right side */
+}
+.my-icon .left-side {
+  width: 40%;
+  height: 100%;
+  /* font awsome */
+  /* //font awsome */
+  /* div */
+  /* //div */
+}
+.my-icon .left-side .fa-arrow-left {
+  width: 10%;
+  height: 30px;
+  margin-top: 7px;
+  border-radius: 25px;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.my-icon .left-side .fa-arrow-left:hover {
+  background: #313131;
+  color: #eeeeee;
+}
+.my-icon .left-side div {
+  margin-left: 13px;
+  /* img */
+  /* //img */
+  /* nick name */
+  /* //nick name */
+}
+.my-icon .left-side div img {
+  margin-right: 7px;
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+}
+.my-icon .left-side div .nick-name {
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  /* p */
+  /* /p */
+}
+.my-icon .left-side div .nick-name p:nth-child(1) {
+  color: #313131;
+  font-size: 13px;
+  margin-bottom: 8px;
+  text-align: left;
+  font-weight: 700;
+}
+.my-icon .left-side div .nick-name p:nth-child(2) {
+  color: #313131;
+  font-size: 10px;
+  padding-left: 5px;
+  position: relative;
+}
+.my-icon .left-side div .nick-name p:nth-child(2) span {
+  position: absolute;
+  margin-left: 5px;
+  width: 10px;
+  height: 10px;
+  background: #21bd5d;
+  border-radius: 20px;
+  top: 2px;
+}
+.my-icon .hours {
+  font-size: 15px;
+  color: #313131;
+  font-weight: 700;
+}
+
+/* // my icon */
+/* list user */
+.list-users {
+  width: 100%;
+  height: 420px;
+  background: white;
+  padding: 20px;
+  overflow-y: scroll;
+}
+@media screen and (max-width: 1024px) {
+  .list-users {
+    height: 100vh;
+  }
+}
+.list-users::-webkit-scrollbar {
+  display: none;
+}
+.list-users a {
+  text-decoration: none;
+  /* card */
+  /* //card */
+}
+.list-users a .card {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  /* user icon */
+  /* //user icon */
+  /* state user */
+  /* //state user */
+}
+.list-users a .card:hover {
+  background: #eeeeee;
+  transition: background 0.4s ease;
+}
+.list-users a .card:not(:first-child) {
+  margin-top: 10px;
+}
+.list-users a .card .icon-user {
+  padding: 5px;
+  /* img */
+  /* //img */
+  /* div */
+  /* //div */
+}
+.list-users a .card .icon-user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  box-shadow: 0 0 20px #eeeeee;
+}
+.list-users a .card .icon-user div {
+  margin-left: 8px;
+  width: 200px;
+  height: 100%;
+  flex-direction: column;
+  /* p */
+  /* //p */
+}
+.list-users a .card .icon-user div p:nth-child(1), .list-users a .card .icon-user div p:nth-child(2) {
+  font-size: 12px;
+  font-weight: 700;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  color: #313131;
+}
+.list-users a .card .icon-user div p:nth-child(2) {
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 11px;
+  padding-left: 5px;
+  color: #313131;
+}
+.list-users a .card .state-user {
+  position: relative;
+}
+.list-users a .card .state-user span {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 20px;
+  background: #21bd5d;
+  right: 5px;
+}
+
+/* //list user */
+
+/*# sourceMappingURL=style.css.map */

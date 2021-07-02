@@ -1,0 +1,285 @@
+/* end of ipad mixin */
+/* end of mobile */
+/* container */
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: 10px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* wepper */
+}
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 0;
+  }
+}
+.container .wepper {
+  width: 60%;
+  min-height: 400px;
+  background: #eeeeee;
+  box-shadow: 0px 0px 128px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: relative;
+  padding: 10px;
+}
+@media screen and (max-width: 1024px) {
+  .container .wepper {
+    width: 100%;
+    padding: 0;
+    min-height: 100vh;
+  }
+}
+@media screen and (max-width: 414px) {
+  .container .wepper {
+    width: 80%;
+  }
+}
+
+/* end of container */
+* {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  border: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* end of ipad mixin */
+/* end of mobile */
+.container {
+  /* wepper */
+}
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .container .wepper {
+    width: 100%;
+    padding: 0;
+    min-height: 100vh;
+  }
+}
+@media screen and (max-width: 414px) {
+  .container .wepper {
+    width: 100%;
+  }
+}
+
+/* end of container */
+.consignee .form-message #data #send, .consignee .form-message #data, .consignee .message-cover .your-message, .consignee .message-cover .my-message, .consignee .contente-users div div p, .consignee .contente-users div div, .consignee .contente-users div, .consignee .contente-users .fa-arrow-left, .consignee .contente-users {
+  display: flex;
+  align-items: center;
+}
+
+/* background */
+.background_image {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: #eeeeee;
+}
+.background_image img {
+  width: 100%;
+  height: 100%;
+}
+
+/* //background */
+/* consignee */
+.consignee {
+  position: absolute;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  /* contente-users */
+  /* //contente-users */
+  /* message cover */
+  /* //message cover */
+  /* form message */
+  /* //form message */
+}
+.consignee .contente-users {
+  padding: 10px;
+  background: white;
+  border-bottom: 1px solid #313131;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  width: 100%;
+  height: 60px;
+  /* font awsome */
+  /* //font awosme */
+}
+.consignee .contente-users .fa-arrow-left {
+  margin-right: 10px;
+  color: #313131;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.consignee .contente-users .fa-arrow-left:hover {
+  background: #313131;
+  color: white;
+}
+@media screen and (max-width: 1024px) {
+  .consignee .contente-users .fa-arrow-left {
+    width: 40px;
+    height: 40px;
+    margin-right: 0;
+  }
+}
+.consignee .contente-users div {
+  /*  width: 80%; */
+  height: 185%;
+  padding: 10px;
+  justify-content: center;
+}
+.consignee .contente-users div img {
+  width: 50px;
+  height: 50px;
+  border-radius: 40px;
+}
+@media screen and (max-width: 1024px) {
+  .consignee .contente-users div img {
+    width: 40px;
+    height: 40px;
+  }
+}
+.consignee .contente-users div div {
+  flex-direction: column;
+  height: 100%;
+}
+.consignee .contente-users div div p {
+  font-size: 12px;
+  color: #313131;
+}
+.consignee .message-cover {
+  padding: 15px;
+  width: 100%;
+  height: 85%;
+  overflow-y: scroll;
+  /* my-message */
+  /* //my-message */
+  /* your-message */
+  /* //your-message */
+}
+.consignee .message-cover::-webkit-scrollbar {
+  width: 6px;
+}
+.consignee .message-cover::-webkit-scrollbar-track {
+  background: transparent;
+}
+.consignee .message-cover::-webkit-scrollbar-thumb {
+  background-color: #6a6b68;
+  border-radius: 4px;
+}
+.consignee .message-cover .my-message {
+  max-width: 46%;
+  word-wrap: break-word;
+  border-radius: 15px;
+  align-items: flex-start;
+  flex-direction: column;
+  cursor: default;
+}
+@media screen and (max-width: 414px) {
+  .consignee .message-cover .my-message {
+    max-width: 65%;
+  }
+}
+.consignee .message-cover .my-message p {
+  background: white;
+  /*  position: absolute; */
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 20px;
+  box-shadow: 1px 2px 1px #888585, 1px 2px 1px inset #e2dbdb;
+}
+.consignee .message-cover .your-message {
+  direction: rtl;
+  /* max-width: 46%; */
+  word-wrap: break-word;
+  border-radius: 15px;
+  align-items: flex-start;
+  margin-top: 20px;
+  /* your-photo */
+  /* //your-photo */
+  /* content-your-message */
+  /* //content-your-message */
+}
+.consignee .message-cover .your-message .your-photo {
+  box-shadow: 0 0 14px #eeeeee;
+  margin-left: 10px;
+}
+.consignee .message-cover .your-message .your-photo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+}
+.consignee .message-cover .your-message .content-your-message p {
+  background: #9cafd2;
+  /* position: absolute; */
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 20px;
+  box-shadow: 1px 2px 1px #888585, 1px 2px 1px inset #e2dbdb;
+  /* width: 100%; */
+  max-width: 45%;
+  cursor: default;
+}
+@media screen and (max-width: 414px) {
+  .consignee .message-cover .your-message .content-your-message p {
+    max-width: 70%;
+  }
+}
+.consignee .form-message {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  padding-top: 3px;
+  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.5);
+  position: relative;
+  /* z-index: 4; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  border-radius: 3px;
+}
+.consignee .form-message #data {
+  width: 100%;
+  height: 100%;
+  /* padding: 5px; */
+}
+.consignee .form-message #data input[type=text] {
+  width: 92%;
+  height: 100%;
+  padding-left: 8px;
+  border-radius: 10px;
+  font-size: 18px;
+  background-color: #eeeeee;
+  box-shadow: 1px 1px 3px inset #313131, -1px -1px 3px inset #313131;
+  margin-right: 2px;
+}
+.consignee .form-message #data #send {
+  width: 8%;
+  height: 95%;
+  justify-content: center;
+  font-size: 20px;
+  background-color: #21bd5d;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px inset #eeeeee, -1px -1px 3px inset #313131;
+}
+
+/* //consignee */
+
+/*# sourceMappingURL=style.css.map */

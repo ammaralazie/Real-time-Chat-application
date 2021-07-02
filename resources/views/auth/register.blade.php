@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/mySass/style.css') }}">
     <style>
     </style>
-    <title>Login</title>
+    <title>SignUp</title>
 </head>
 
 <body>

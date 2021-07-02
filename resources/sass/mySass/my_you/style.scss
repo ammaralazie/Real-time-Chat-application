@@ -1,0 +1,252 @@
+@import '_color';
+@import '_container';
+@import '_main';
+@import '_mobile';
+
+.container{
+    @include ipad{
+        padding: 0;
+    }
+
+
+    /* wepper */
+    .wepper{
+
+        @include ipad{
+            width: 100%;
+            padding: 0;
+            min-height: 100vh;
+        }
+        @include mobile{
+            width: 100%;
+        }
+    }
+
+}
+/* end of container */
+%flex{
+    display: flex;
+    align-items: center;
+}
+/* background */
+.background_image{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color: $more_light;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+/* //background */
+
+/* consignee */
+.consignee{
+    position: absolute;
+    background-size:cover;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    /* contente-users */
+    .contente-users{
+        padding: 10px;
+        @extend %flex;
+        background: $light;
+        border-bottom: 1px solid $dark;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        width: 100%;
+        height: 60px;
+        /* font awsome */
+        .fa-arrow-left{
+            margin-right: 10px;
+            color: $dark;
+            width: 30px;
+            height: 30px;
+            border-radius: 20px;
+            @extend %flex;
+            justify-content: center;
+            transition: all .3s ease;
+            &:hover{
+                background: $dark;
+                color: $light;
+            }
+            @include ipad{
+                width: 40px;
+                height: 40px;
+                margin-right:0;
+            }
+        }
+        /* //font awosme */
+        div{
+           /*  width: 80%; */
+            height: 185%;
+            padding: 10px;
+            @extend %flex;
+            justify-content: center;
+            @extend %flex;
+            img{
+                width: 50px;
+                height: 50px;
+                border-radius: 40px;
+                @include ipad{
+                    width: 40px;
+                    height: 40px
+                }
+            }
+            div{
+               @extend %flex;
+               flex-direction: column;
+               height: 100%;
+               p{
+                   font-size: 12px;
+                   color: $dark;
+                   @extend %flex;
+               }
+            }
+
+        }
+    }
+    /* //contente-users */
+
+    /* message cover */
+    .message-cover{
+        padding: 15px;
+        width: 100%;
+        height: 85%;
+        overflow-y: scroll;
+        &::-webkit-scrollbar{
+            width: 6px;
+        }&::-webkit-scrollbar-track{
+            background: transparent;
+        }&::-webkit-scrollbar-thumb{
+            background-color: rgb(106, 107, 104);
+            border-radius: 4px;
+        }
+
+
+        /* my-message */
+        .my-message{
+            max-width: 46%;
+            word-wrap: break-word;
+            border-radius: 15px;
+            @extend %flex;
+            align-items: flex-start;
+            flex-direction: column;
+            cursor: default;
+            @include mobile{
+                max-width: 65%;
+            }
+            p{
+                background: rgb(255 255 255);
+               /*  position: absolute; */
+                padding: 10px;
+                margin-bottom: 8px;
+                border-radius: 20px;
+                box-shadow: 1px 2px 1px #888585, 1px 2px 1px inset #e2dbdb;
+            }
+
+        }
+        /* //my-message */
+
+        /* your-message */
+        .your-message{
+            direction: rtl;
+            /* max-width: 46%; */
+            word-wrap: break-word;
+            border-radius: 15px;
+            @extend %flex;
+            align-items: flex-start;
+            margin-top: 20px;
+
+            /* your-photo */
+            .your-photo{
+                box-shadow: 0 0 14px #eeeeee;
+                margin-left: 10px;
+                img{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 30px;
+
+                }
+            }
+            /* //your-photo */
+
+            /* content-your-message */
+            .content-your-message{
+                p{
+                    background: rgb(156 175 210);
+                    /* position: absolute; */
+                    padding: 10px;
+                    margin-bottom: 8px;
+                    border-radius: 20px;
+                    box-shadow: 1px 2px 1px #888585, 1px 2px 1px inset #e2dbdb;
+                    /* width: 100%; */
+                    max-width: 45%;
+                    cursor: default;
+                    @include mobile{
+                        max-width: 70%;
+                    }
+                }
+            }
+            /* //content-your-message */
+
+
+        }
+        /* //your-message */
+
+    }
+    /* //message cover */
+
+    /* form message */
+    .form-message{
+        width: 100%;
+        height: 50px;
+        background-color: rgb(255 255 255);
+        padding-top: 3px;
+        box-shadow: 0 -1px 1px rgb(0 0 0 / 50%);
+        position: relative;
+        /* z-index: 4; */
+        /* display: flex; */
+        /* align-items: center; */
+        /* justify-content: center; */
+        border-radius: 3px;
+        #data{
+            width: 100%;
+            height: 100%;
+            @extend %flex;
+            /* padding: 5px; */
+            input[type=text]{
+                width: 92%;
+                height: 100%;
+                padding-left: 8px;
+                border-radius: 10px;
+                font-size: 18px;
+                background-color: $more_light;
+                box-shadow: 1px 1px 3px inset $dark,-1px -1px 3px inset $dark;
+
+                margin-right: 2px;
+            }
+            #send{
+                width:8% ;
+                height: 95%;
+                @extend %flex;
+                justify-content: center;
+                font-size: 20px;
+                background-color: $green;
+                color: $light;
+                border-radius: 4px;
+                cursor: pointer;
+                box-shadow: 1px 1px 3px inset $more_light,-1px -1px 3px inset $dark;
+
+            }
+
+        }
+    }
+    /* //form message */
+}
+/* //consignee */
+
+

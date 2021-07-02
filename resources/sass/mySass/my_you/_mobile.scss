@@ -1,0 +1,13 @@
+@mixin ipad {
+    @media screen and (max-width:1024px){
+        @content
+    }
+};
+/* end of ipad mixin */
+
+@mixin mobile {
+    @media screen and (max-width:414px){
+        @content
+    }
+};
+/* end of mobile */

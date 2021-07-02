@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMessagesTable extends Migration
+class CreateReciveMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
+        Schema::create('recive_messages', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('user_id')->unsigned();
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->text('content');
-            $table->boolean('state')->default(0);
+            $table->bigInteger('message_id')->unsigned();
+            // $table->foreign('message_id')->references('id')->on('messages')->onDelete('cascade');
             $table->timestamps();
 
-            // $table->foreign('to_user_id','to_user')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
@@ -32,6 +32,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('recive_messages');
     }
 }

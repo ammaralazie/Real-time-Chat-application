@@ -10,34 +10,29 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'username', 'email','file', 'password',
-    ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    protected $fillable = [
+        'username', 'email', 'file', 'password',
+    ];
+    protected $appends = ['img',
+    ];
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function messages(){
-        return $this->hasMany(Message::class);
+    public function getImgAttribute(){
+        return asset('media/'.$this->file);
     }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }//end of messages
+
+    public function reciveUser(){
+        return $this->hasMany(ReciveMessage::class);
+    }//end of reciveUser
 }
