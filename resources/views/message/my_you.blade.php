@@ -1,11 +1,11 @@
 @extends('layouts.base')
 @section('style')
     <link rel="stylesheet" href="{{ asset('css/mySass/my_you/style.css') }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
 @section('title')
     {{ $usr_id->username }}
 @stop
-
 @section('body')
     <div class="background_image">
         <img src="{{ asset('media/1.jpg') }}" alt="" />
@@ -36,8 +36,11 @@
 
         <!-- form message -->
         <div class="form-message">
-            <form action="" id="data" method="post">
-                <input type="text" name="message">
+            <form id="data">
+                @csrf
+                <input type="hidden" name="sendUsr" value="{{ auth()->user()->id }}">
+                <input type="hidden" name="reciveUsr" value="{{ $usr_id->id }}">
+                <input type="text" name="message" placeholder="your message ...">
                 <button id="send"><i class="fas fa-paper-plane"></i></button>
             </form>
         </div>
@@ -47,6 +50,14 @@
 @stop
 
 @section('script')
+    <script>
+        localStorage.setItem('sndUsr', {{ auth()->user()->id }});
+        localStorage.setItem('rcvUsr', {{ $usr_id->id }});
+    </script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/myJs/jQuery.min.js') }}"></script>
+    <script src="{{ asset('js/myJs/sendMessage.js') }}"></script>
+
     <script>
         var jsn = '';
         var obj2 = [];
@@ -73,7 +84,6 @@
         var bdy = document.body;
         for (var i = 0; i < newobj.length; i++) {
             if (obj2[i].user_id == usrId) {
-                console.log('true')
                 var myMessage = document.createElement('div');
                 myMessage.classList = 'my-message';
 
@@ -114,8 +124,9 @@
         //make scrollbar in bottom
 
         var messageCover = document.getElementsByClassName('message-cover')[0];
-        messageCover.scrollTop=messageCover.scrollHeight;
+        messageCover.scrollTop = messageCover.scrollHeight;
 
         //end make scrollbar in bottom
     </script>
+
 @stop

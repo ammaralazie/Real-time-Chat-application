@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $filebale=['from_user_id','to_user_id','content','state'];
-
+    protected $fillable=['user_id','content','state'];
     public function sendUser(){
 
         return $this->belongsTo(User::class);
@@ -16,6 +15,6 @@ class Message extends Model
 
     public function reciveUser(){
         return $this->hasOne(ReciveMessage::class);
-    }//end ofnreciveUser
+    }//end of reciveUser
 
 }
