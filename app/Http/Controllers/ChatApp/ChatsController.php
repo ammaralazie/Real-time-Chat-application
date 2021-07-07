@@ -78,7 +78,6 @@ class ChatsController extends Controller
 
         //for sort by created_at
 
-        //dd($all_msg,$all_msg[1]);
           $all_msg=(object)array_reverse($all_msg);;
 
 
@@ -117,7 +116,7 @@ class ChatsController extends Controller
             }//end of if
 
             //make event to ChatEvent
-            event(new ChatEvent($createMsg->content,$sndUsr->id,$recv->user_id));
+            event(new ChatEvent($createMsg->content,$recv->user_id));
 
             return response()->json(['msg'=>'successfly']);
 
@@ -127,6 +126,7 @@ class ChatsController extends Controller
     }//end of recive_message
 
     public function showMessage(){
-        return view('message.my_you');
-    }
+        return view('message.test');
+    }//end of showMessage
+
 }//end of ChatsController

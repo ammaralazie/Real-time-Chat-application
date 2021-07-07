@@ -51,8 +51,8 @@
 
 @section('script')
     <script>
-        localStorage.setItem('sndUsr', {{ auth()->user()->id }});
-        localStorage.setItem('rcvUsr', {{ $usr_id->id }});
+        /* localStorage.setItem('sndUsr', "{{ auth()->user()->id }}"); */
+        localStorage.setItem('rcvUsr', "{{ $usr_id->id }}");
     </script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/myJs/jQuery.min.js') }}"></script>

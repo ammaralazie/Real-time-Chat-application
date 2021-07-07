@@ -43502,7 +43502,7 @@ var _require = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-e
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 console.log('working ...');
-window.Echo["private"]("chat-prvate." + localStorage.getItem("sndUsr") + '.' + localStorage.getItem("rcvUsr")).listen(".chat-p", function (e) {
+window.Echo["private"]("chat-prvate." + localStorage.getItem("rcvUsr")).listen(".chat-p", function (e) {
   console.log(e);
 });
 
@@ -43558,8 +43558,8 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\src\chat-app\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\src\chat-app\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xamp\htdocs\src\chat-app\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xamp\htdocs\src\chat-app\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
