@@ -43496,13 +43496,15 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _require = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js"),
-    Echo = _require["default"];
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    Axios = _require["default"];
+
+var _require2 = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js"),
+    Echo = _require2["default"];
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-console.log('working ...');
-window.Echo["private"]("chat-prvate." + localStorage.getItem("rcvUsr")).listen(".chat-p", function (e) {
+window.Echo["private"]("chat-prvate." + localStorage.getItem("sndUsr") + '.' + localStorage.getItem('rcvUsr')).listen(".chat-p", function (e) {
   console.log(e);
 });
 

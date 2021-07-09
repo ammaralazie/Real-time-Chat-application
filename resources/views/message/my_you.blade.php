@@ -51,7 +51,7 @@
 
 @section('script')
     <script>
-        /* localStorage.setItem('sndUsr', "{{ auth()->user()->id }}"); */
+        localStorage.setItem('sndUsr', "{{ auth()->user()->id }}");
         localStorage.setItem('rcvUsr', "{{ $usr_id->id }}");
     </script>
     <script src="{{ asset('js/app.js') }}"></script>
@@ -128,5 +128,6 @@
 
         //end make scrollbar in bottom
     </script>
+
 
 @stop
