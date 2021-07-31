@@ -7,3 +7,5 @@ window.Echo.private("chat-prvate." +localStorage.getItem("sndUsr")+'.'+localStor
 .listen(".chat-p",(e)=>{
     console.log(e);
 });
+
+

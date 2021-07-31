@@ -3,8 +3,7 @@
 use App\Events\ChatEvent;
 use App\Http\Controllers\ChatApp\ChatsController;
 use App\Http\Controllers\ChatApp\TestController;
-
-
+use App\Http\Controllers\ChatApp\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function(){
@@ -16,5 +15,8 @@ Route::middleware('auth')->group(function(){
 
 
 });//end of group
+
+//home Router
+Route::get('/',[UserController::class,'index'])->name('user.index');
 
 
