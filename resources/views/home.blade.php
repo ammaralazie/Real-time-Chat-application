@@ -15,20 +15,26 @@
 
     {{-- app root --}}
     <div class="" id="app">
+        {{-- navbar --}}
         <nav>
             <div class="wepper">
                 <div class="logo">
                     <a href="">ChatApp</a>
                 </div>
                 <ul class="main-list">
-                    <li>
+                    <li class="search-buuton" >
+                        <i class="far fa-search search-icon" @click="showInputSearch"></i>
+                        <input type="search">
+                    </li>
+
+                    <li class="num-messages">
                         <a href="">
                             <i class="far fa-envelope"></i>
                             <span>20</span>
                         </a>
                     </li>
 
-                    <li>
+                    <li class="showList">
                         <div class="show-list-setting-profile" @click="showList">
                             <i class="far fa-user-alt"></i> User
                         </div>
@@ -44,7 +50,13 @@
                 </ul>
             </div>
         </nav>
+        {{-- /navbar --}}
+
+
+
+        {{-- global-home --}}
         <global-home></global-home>
+        {{-- global-home --}}
     </div>
 
     {{-- /app root --}}

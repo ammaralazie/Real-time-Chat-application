@@ -59193,6 +59193,11 @@ var app = new Vue({
     showList: function showList() {
       var profileList = document.getElementsByClassName('profile-list')[0];
       profileList.classList.toggle('show-list');
+    },
+    showInputSearch: function showInputSearch() {
+      var inputSearc = document.querySelector("input[type=search]");
+      inputSearc.classList.toggle('showInputSearch');
+      inputSearc.style.border = "1px solid #000";
     }
   }
 });

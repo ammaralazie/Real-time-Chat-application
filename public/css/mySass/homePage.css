@@ -14,7 +14,7 @@ html {
 
 /* end of ipad mixin */
 /* end of mobile */
-nav .wepper .main-list li:nth-child(2) .profile-list li, nav .wepper .main-list li:nth-child(2), nav .wepper .main-list, nav .wepper, nav {
+nav .wepper .main-list .showList .profile-list li, nav .wepper .main-list .showList, nav .wepper .main-list, nav .wepper, nav {
   display: flex;
   align-items: center;
 }
@@ -52,21 +52,23 @@ nav .wepper .logo {
 nav .wepper .main-list {
   margin-right: 15px;
   /* /first child */
+  /* search-buuton */
+  /* /search-buuton */
 }
 nav .wepper .main-list li {
   margin: 10px;
 }
-nav .wepper .main-list li:first-child {
+nav .wepper .main-list .num-messages {
   font-size: 25px;
   position: relative;
   margin-right: 30px;
 }
-nav .wepper .main-list li:first-child a {
+nav .wepper .main-list .num-messages a {
   text-decoration: none;
   cursor: pointer;
   color: #313131;
 }
-nav .wepper .main-list li:first-child a span {
+nav .wepper .main-list .num-messages a span {
   position: absolute;
   color: white;
   font-size: 11px;
@@ -76,7 +78,7 @@ nav .wepper .main-list li:first-child a span {
   border-radius: 20px;
   background-color: #b32323;
 }
-nav .wepper .main-list li:nth-child(2) {
+nav .wepper .main-list .showList {
   position: relative;
   justify-content: center;
   flex-direction: column;
@@ -85,14 +87,14 @@ nav .wepper .main-list li:nth-child(2) {
   /* profile-list */
   /* /profile-list */
 }
-nav .wepper .main-list li:nth-child(2) .show-list-setting-profile {
+nav .wepper .main-list .showList .show-list-setting-profile {
   padding: 10px;
   background: #3a3737;
   color: white;
   border-radius: 3px;
   cursor: pointer;
 }
-nav .wepper .main-list li:nth-child(2) .profile-list {
+nav .wepper .main-list .showList .profile-list {
   position: absolute;
   top: 54px;
   left: 100px;
@@ -105,25 +107,83 @@ nav .wepper .main-list li:nth-child(2) .profile-list {
   text-align: center;
   transition: all 0.3s ease;
 }
-nav .wepper .main-list li:nth-child(2) .profile-list.show-list {
+nav .wepper .main-list .showList .profile-list.show-list {
   left: -111px;
 }
-nav .wepper .main-list li:nth-child(2) .profile-list li:not(last-child) {
+nav .wepper .main-list .showList .profile-list li:not(last-child) {
   border-bottom: 1px solid #313131;
 }
-nav .wepper .main-list li:nth-child(2) .profile-list li {
+nav .wepper .main-list .showList .profile-list li {
   transition: color 0.3s ease;
   width: 90%;
   height: 50px;
   justify-content: center;
   font-size: 18px;
 }
-nav .wepper .main-list li:nth-child(2) .profile-list li div a:hover {
+nav .wepper .main-list .showList .profile-list li div a:hover {
   color: brown;
 }
-nav .wepper .main-list li:nth-child(2) .profile-list li a {
+nav .wepper .main-list .showList .profile-list li a {
   text-decoration: none;
   color: #313131;
+}
+nav .wepper .main-list .search-buuton {
+  position: relative;
+  widows: 250px;
+}
+nav .wepper .main-list .search-buuton .search-icon {
+  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+}
+nav .wepper .main-list .search-buuton input[type=search] {
+  width: 100%;
+  /* height: 100%; */
+  height: 35px;
+  border-radius: 4px;
+  box-shadow: 2px 3px 4px #313131;
+  text-align: center;
+  transition: all 0.1s ease;
+  float: right;
+  font-size: 18px;
+  color: #313131;
+  padding: 10px;
+}
+nav .wepper .main-list .search-buuton input[type=search]:focus {
+  width: 500px;
+  height: 44px;
+  border: 1px solid #313131;
+}
+@media screen and (max-width: 411px) {
+  nav .wepper .main-list .search-buuton {
+    /* /input search */
+  }
+  nav .wepper .main-list .search-buuton .search-icon {
+    /* font-size: 20px; */
+    position: absolute;
+    top: -8px;
+    left: -38px;
+    font-weight: 700;
+    font-size: 22px;
+  }
+  nav .wepper .main-list .search-buuton input[type=search] {
+    transition: all 0.3s ease;
+    position: absolute;
+    top: -114px;
+    z-index: 2;
+    width: 367px;
+    left: -195px;
+    height: 70px;
+  }
+  nav .wepper .main-list .search-buuton input[type=search]:focus {
+    width: 367px;
+    height: 70px;
+    border: 1px solid #313131;
+  }
+  nav .wepper .main-list .search-buuton input[type=search].showInputSearch {
+    top: 37px;
+  }
 }
 
 /* /nav */

@@ -44,7 +44,7 @@ nav{
              li{
                  margin: 10px;
              };
-             li:first-child{
+             .num-messages{
                  font-size: 25px;
                  position: relative;
                  margin-right: 30px;
@@ -65,7 +65,7 @@ nav{
                  }
              }/* /first child */
 
-             li:nth-child(2){
+             .showList{
                  position: relative;
                  @extend %flex;
                  justify-content: center;
@@ -116,6 +116,64 @@ nav{
                  }
                    /* /profile-list */
              }
+
+             /* search-buuton */
+             .search-buuton{
+                 position: relative;
+                 widows: 250px;
+                 .search-icon{
+                    font-size: 20px;
+                    position: absolute;
+                    top: 10px;
+                    left:5px;
+                 }
+                 input[type=search]{
+                    width: 100%;
+                    /* height: 100%; */
+                    height: 35px;
+                    border-radius: 4px;
+                    box-shadow: 2px 3px 4px #313131;
+                    text-align: center;
+                    transition: all .1s ease;
+                    float: right;
+                    font-size: 18px;
+                    color: $dark;
+                    padding: 10px;
+                    &:focus{
+                        width: 500px;
+                        height: 44px;
+                        border: 1px solid $dark;
+                    }
+                 }
+                 @include mobile{
+                    .search-icon {
+                        /* font-size: 20px; */
+                        position: absolute;
+                        top: -8px;
+                        left: -38px;
+                        font-weight: 700;
+                        font-size: 22px;
+                    }
+                    input[type=search]{
+                        transition: all .3s ease;
+                        position: absolute;
+                        top: -114px;
+                        z-index: 2;
+                        width: 367px;
+                        left: -195px;
+                        height: 70px;
+                        &:focus{
+                            width: 367px;
+                            height: 70px;
+                            border: 1px solid $dark;
+                        }
+                        &.showInputSearch{
+                            top: 37px;
+                        }
+                    }/* /input search */
+                 }
+             }
+             /* /search-buuton */
 
          }
          /* /main list */

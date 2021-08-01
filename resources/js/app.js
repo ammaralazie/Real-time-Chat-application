@@ -24,7 +24,13 @@ const app = new Vue({
         showList(){
             let profileList = document.getElementsByClassName('profile-list')[0]
             profileList.classList.toggle('show-list')
+        },
+        showInputSearch(){
+            let inputSearc=document.querySelector("input[type=search]")
+            inputSearc.classList.toggle('showInputSearch')
+            inputSearc.style.border="1px solid #000"
         }
+
     }
 });
 
