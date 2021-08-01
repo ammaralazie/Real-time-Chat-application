@@ -26,3 +26,9 @@ button.addEventListener('submit',function(){
         this.closest('form').submit();
     }
 })
+
+
+
+// show profile list in navbar
+
+

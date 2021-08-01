@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  border: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* end of ipad mixin */
+/* end of mobile */
+nav .wepper .main-list li:nth-child(2) .profile-list li, nav .wepper .main-list li:nth-child(2), nav .wepper .main-list, nav .wepper, nav {
+  display: flex;
+  align-items: center;
+}
+
+/* nav */
+nav {
+  width: 100%;
+  height: 60px;
+  box-shadow: 0 2px 3px #313131;
+  padding: 10px;
+  background-color: white;
+  /* wepper */
+  /* /wepper */
+}
+nav .wepper {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  position: fixed;
+  /* logo */
+  /* /logo */
+  /* main lisat */
+  /* /main list */
+}
+nav .wepper .logo {
+  background-image: linear-gradient(to left bottom, #56669d, #8b6da7, #ba75a7, #e0819d, #fa9490);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -ms-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  -ms-text-fill-color: transparent;
+  font-weight: 700;
+}
+nav .wepper .main-list {
+  margin-right: 15px;
+  /* /first child */
+}
+nav .wepper .main-list li {
+  margin: 10px;
+}
+nav .wepper .main-list li:first-child {
+  font-size: 25px;
+  position: relative;
+  margin-right: 30px;
+}
+nav .wepper .main-list li:first-child a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #313131;
+}
+nav .wepper .main-list li:first-child a span {
+  position: absolute;
+  color: white;
+  font-size: 11px;
+  right: -9.99px;
+  /* top: 2px; */
+  padding: 2px;
+  border-radius: 20px;
+  background-color: #b32323;
+}
+nav .wepper .main-list li:nth-child(2) {
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
+  /* show-list-setting-profile */
+  /* /show-list-setting-profile */
+  /* profile-list */
+  /* /profile-list */
+}
+nav .wepper .main-list li:nth-child(2) .show-list-setting-profile {
+  padding: 10px;
+  background: #3a3737;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+nav .wepper .main-list li:nth-child(2) .profile-list {
+  position: absolute;
+  top: 54px;
+  left: 100px;
+  flex-direction: column;
+  background-color: #eeeeee;
+  box-shadow: -1px 2px 3px #313131;
+  border-radius: 4px;
+  width: 200px;
+  height: 60vh;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+nav .wepper .main-list li:nth-child(2) .profile-list.show-list {
+  left: -111px;
+}
+nav .wepper .main-list li:nth-child(2) .profile-list li:not(last-child) {
+  border-bottom: 1px solid #313131;
+}
+nav .wepper .main-list li:nth-child(2) .profile-list li {
+  transition: color 0.3s ease;
+  width: 90%;
+  height: 50px;
+  justify-content: center;
+  font-size: 18px;
+}
+nav .wepper .main-list li:nth-child(2) .profile-list li div a:hover {
+  color: brown;
+}
+nav .wepper .main-list li:nth-child(2) .profile-list li a {
+  text-decoration: none;
+  color: #313131;
+}
+
+/* /nav */
+
+/*# sourceMappingURL=homePage.css.map */
