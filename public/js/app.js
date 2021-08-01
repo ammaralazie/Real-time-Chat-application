@@ -1931,10 +1931,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      test: ' component is work'
+      test: " component is work"
     };
   }
 });
@@ -43779,11 +43828,81 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "rootUser" }, [
-    _c("div", { domProps: { textContent: _vm._s(_vm.test) } })
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "rootUser" }, [
+      _c("ul", { staticClass: "wepperUser" }, [
+        _c("li", { staticClass: "cards" }, [
+          _c("div", { staticClass: "card card-margin" }, [
+            _c("div", { staticClass: "card-header no-border" }, [
+              _c("h5", { staticClass: "card-title" }, [_vm._v("MOM")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body pt-0" }, [
+              _c("div", { staticClass: "widget-49" }, [
+                _c("div", { staticClass: "widget-49-title-wrapper" }, [
+                  _c("div", { staticClass: "widget-49-date-primary" }, [
+                    _c("span", { staticClass: "widget-49-date-day" }, [
+                      _vm._v("09")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "widget-49-date-month" }, [
+                      _vm._v("apr")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "widget-49-meeting-info" }, [
+                    _c("span", { staticClass: "widget-49-pro-title" }, [
+                      _vm._v("PRO-08235 DeskOpe. Website")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "widget-49-meeting-time" }, [
+                      _vm._v("12:00 to 13.30 Hrs")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("ol", { staticClass: "widget-49-meeting-points" }, [
+                  _c("li", { staticClass: "widget-49-meeting-item" }, [
+                    _c("span", [_vm._v("Expand module is removed")])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "widget-49-meeting-item" }, [
+                    _c("span", [_vm._v("Data migration is in scope")])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "widget-49-meeting-item" }, [
+                    _c("span", [
+                      _vm._v(
+                        "Session timeout increase to 30\n                                    minutes"
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "widget-49-meeting-action" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-sm btn-flash-border-primary",
+                      attrs: { href: "#" }
+                    },
+                    [_vm._v("View All")]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

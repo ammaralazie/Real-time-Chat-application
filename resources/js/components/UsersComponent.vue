@@ -1,15 +1,64 @@
 <template>
     <div class="rootUser">
-        <div v-text="test" ></div>
+        <ul class="wepperUser">
+            <li class="cards">
+                <div class="card card-margin">
+                    <div class="card-header no-border">
+                        <h5 class="card-title">MOM</h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+                            <div class="widget-49-title-wrapper">
+                                <div class="widget-49-date-primary">
+                                    <span class="widget-49-date-day">09</span>
+                                    <span class="widget-49-date-month"
+                                        >apr</span
+                                    >
+                                </div>
+                                <div class="widget-49-meeting-info">
+                                    <span class="widget-49-pro-title"
+                                        >PRO-08235 DeskOpe. Website</span
+                                    >
+                                    <span class="widget-49-meeting-time"
+                                        >12:00 to 13.30 Hrs</span
+                                    >
+                                </div>
+                            </div>
+                            <ol class="widget-49-meeting-points">
+                                <li class="widget-49-meeting-item">
+                                    <span>Expand module is removed</span>
+                                </li>
+                                <li class="widget-49-meeting-item">
+                                    <span>Data migration is in scope</span>
+                                </li>
+                                <li class="widget-49-meeting-item">
+                                    <span
+                                        >Session timeout increase to 30
+                                        minutes</span
+                                    >
+                                </li>
+                            </ol>
+                            <div class="widget-49-meeting-action">
+                                <a
+                                    href="#"
+                                    class="btn btn-sm btn-flash-border-primary"
+                                    >View All</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
 export default {
-data(){
-    return{
-        test:' component is work'
+    data() {
+        return {
+            test: " component is work"
+        };
     }
-}
-}
+};
 </script>

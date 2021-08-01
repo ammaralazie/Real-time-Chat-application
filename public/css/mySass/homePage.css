@@ -26,6 +26,9 @@ nav {
   box-shadow: 0 2px 3px #313131;
   padding: 10px;
   background-color: white;
+  position: fixed;
+  z-index: 100;
+  top: 0px;
   /* wepper */
   /* /wepper */
 }
@@ -33,7 +36,6 @@ nav .wepper {
   width: 100%;
   height: 100%;
   justify-content: space-between;
-  position: fixed;
   /* logo */
   /* /logo */
   /* main lisat */
@@ -51,6 +53,7 @@ nav .wepper .logo {
 }
 nav .wepper .main-list {
   margin-right: 15px;
+  margin-top: 15px;
   /* /first child */
   /* search-buuton */
   /* /search-buuton */
@@ -97,7 +100,7 @@ nav .wepper .main-list .showList .show-list-setting-profile {
 nav .wepper .main-list .showList .profile-list {
   position: absolute;
   top: 54px;
-  left: 100px;
+  left: 150px;
   flex-direction: column;
   background-color: #eeeeee;
   box-shadow: -1px 2px 3px #313131;
@@ -106,9 +109,10 @@ nav .wepper .main-list .showList .profile-list {
   height: 60vh;
   text-align: center;
   transition: all 0.3s ease;
+  padding-left: 0px;
 }
 nav .wepper .main-list .showList .profile-list.show-list {
-  left: -111px;
+  left: -90px;
 }
 nav .wepper .main-list .showList .profile-list li:not(last-child) {
   border-bottom: 1px solid #313131;
@@ -140,7 +144,7 @@ nav .wepper .main-list .search-buuton .search-icon {
 nav .wepper .main-list .search-buuton input[type=search] {
   width: 100%;
   /* height: 100%; */
-  height: 35px;
+  height: 33px;
   border-radius: 4px;
   box-shadow: 2px 3px 4px #313131;
   text-align: center;
@@ -172,7 +176,7 @@ nav .wepper .main-list .search-buuton input[type=search]:focus {
     position: absolute;
     top: -114px;
     z-index: 2;
-    width: 367px;
+    width: 360px;
     left: -195px;
     height: 70px;
   }
@@ -187,5 +191,19 @@ nav .wepper .main-list .search-buuton input[type=search]:focus {
 }
 
 /* /nav */
+/* UserComponent */
+.wepperUser {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 70px;
+}
+.wepperUser .card {
+  padding: 10px;
+  width: 282px;
+  margin: 10px;
+}
+
+/* /UserComponent */
 
 /*# sourceMappingURL=homePage.css.map */

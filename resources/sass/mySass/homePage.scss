@@ -14,6 +14,10 @@ nav{
     padding: 10px;
     background-color: $light;
     @extend %flex;
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+
 
     /* wepper */
     .wepper{
@@ -21,8 +25,6 @@ nav{
         height: 100%;
         @extend %flex;
         justify-content: space-between;
-        position: fixed;
-
          /* logo */
          .logo{
             background-image: linear-gradient(to left bottom, #56669d, #8b6da7, #ba75a7, #e0819d, #fa9490);
@@ -41,6 +43,7 @@ nav{
          .main-list{
              @extend %flex;
              margin-right: 15px;
+             margin-top: 15px;
              li{
                  margin: 10px;
              };
@@ -85,7 +88,7 @@ nav{
                  .profile-list{
                     position: absolute;
                     top: 54px;
-                    left: 100px;
+                    left: 150px;
                     flex-direction: column;
                     background-color: rgb(238 238 238);
                     box-shadow: -1px 2px 3px #313131;
@@ -94,8 +97,9 @@ nav{
                     height: 60vh;
                     text-align: center;
                     transition: all .3s ease;
+                    padding-left:0px;
                     &.show-list{
-                        left: -111px;
+                        left: -90px;
                     }
                     li:not(last-child){
                         border-bottom: 1px solid $dark;
@@ -130,7 +134,7 @@ nav{
                  input[type=search]{
                     width: 100%;
                     /* height: 100%; */
-                    height: 35px;
+                    height: 33px;
                     border-radius: 4px;
                     box-shadow: 2px 3px 4px #313131;
                     text-align: center;
@@ -159,7 +163,7 @@ nav{
                         position: absolute;
                         top: -114px;
                         z-index: 2;
-                        width: 367px;
+                        width: 360px;
                         left: -195px;
                         height: 70px;
                         &:focus{
@@ -183,3 +187,17 @@ nav{
 
 
 }/* /nav */
+
+/* UserComponent */
+.wepperUser{
+    width: 100%;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    margin-top: 70px;
+    .card{
+        padding: 10px;
+        width: 282px;
+        margin: 10px;
+    }
+}
+/* /UserComponent */
