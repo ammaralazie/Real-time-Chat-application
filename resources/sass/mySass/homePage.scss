@@ -46,6 +46,9 @@ nav{
              margin-top: 15px;
              li{
                  margin: 10px;
+                 @include mobile{
+                     margin-right: 20px
+                 }
              };
              .num-messages{
                  font-size: 25px;
@@ -124,7 +127,6 @@ nav{
              /* search-buuton */
              .search-buuton{
                  position: relative;
-                 widows: 250px;
                  .search-icon{
                     font-size: 20px;
                     position: absolute;
@@ -157,18 +159,21 @@ nav{
                         left: -38px;
                         font-weight: 700;
                         font-size: 22px;
+                        width: 250px;
                     }
                     input[type=search]{
-                        transition: all .3s ease;
+                        transition: all 0.3s ease;
                         position: absolute;
                         top: -114px;
                         z-index: 2;
-                        width: 360px;
-                        left: -195px;
-                        height: 70px;
+                        width: 200px;
+                        left: -114px;
+                        height: 42px;
+                        float: ceil($number: 4);
                         &:focus{
-                            width: 367px;
-                            height: 70px;
+                            width: 260px;
+                            left: -124px;
+                            height: 42px;
                             border: 1px solid $dark;
                         }
                         &.showInputSearch{
@@ -193,10 +198,16 @@ nav{
     width: 100%;
     display: grid;
     grid-template-columns:1fr 1fr 1fr 1fr;
+    @include ipad{
+        grid-template-columns:1fr 1fr 1fr;
+        padding: 2px;
+    }
+    @include mobile{
+        grid-template-columns:1fr;
+    }
     margin-top: 70px;
-    .card{
+    .cards{
         padding: 10px;
-        width: 282px;
         margin: 10px;
     }
 }

@@ -61,6 +61,11 @@ nav .wepper .main-list {
 nav .wepper .main-list li {
   margin: 10px;
 }
+@media screen and (max-width: 411px) {
+  nav .wepper .main-list li {
+    margin-right: 20px;
+  }
+}
 nav .wepper .main-list .num-messages {
   font-size: 25px;
   position: relative;
@@ -133,7 +138,6 @@ nav .wepper .main-list .showList .profile-list li a {
 }
 nav .wepper .main-list .search-buuton {
   position: relative;
-  widows: 250px;
 }
 nav .wepper .main-list .search-buuton .search-icon {
   font-size: 20px;
@@ -170,19 +174,22 @@ nav .wepper .main-list .search-buuton input[type=search]:focus {
     left: -38px;
     font-weight: 700;
     font-size: 22px;
+    width: 250px;
   }
   nav .wepper .main-list .search-buuton input[type=search] {
     transition: all 0.3s ease;
     position: absolute;
     top: -114px;
     z-index: 2;
-    width: 360px;
-    left: -195px;
-    height: 70px;
+    width: 200px;
+    left: -114px;
+    height: 42px;
+    float: 4;
   }
   nav .wepper .main-list .search-buuton input[type=search]:focus {
-    width: 367px;
-    height: 70px;
+    width: 260px;
+    left: -124px;
+    height: 42px;
     border: 1px solid #313131;
   }
   nav .wepper .main-list .search-buuton input[type=search].showInputSearch {
@@ -198,9 +205,19 @@ nav .wepper .main-list .search-buuton input[type=search]:focus {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-top: 70px;
 }
-.wepperUser .card {
+@media screen and (max-width: 1024px) {
+  .wepperUser {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 2px;
+  }
+}
+@media screen and (max-width: 411px) {
+  .wepperUser {
+    grid-template-columns: 1fr;
+  }
+}
+.wepperUser .cards {
   padding: 10px;
-  width: 282px;
   margin: 10px;
 }
 
