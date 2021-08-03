@@ -24,8 +24,13 @@
                 </div>
                 <ul class="main-list">
                     <li class="search-buuton" >
-                        <i class="far fa-search search-icon" @click="showInputSearch"></i>
-                        <input type="search">
+                        <div v-if="isSearching == false">
+                            <i class="far fa-search search-icon" @click="showInputSearch"></i>
+                        </div>
+                        <div v-else>
+                            <img class="search-icon search-animation" src="{{asset('media/searchAnimation/search.svg')}}" alt="">
+                        </div>
+                        <input type="search" v-model="searchUser">
                     </li>
 
                     <li class="num-messages">
@@ -52,7 +57,6 @@
             </div>
         </nav>
         {{-- /navbar --}}
-
 
 
         {{-- global-home --}}
