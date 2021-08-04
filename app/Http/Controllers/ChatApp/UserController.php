@@ -20,9 +20,9 @@ class UserController extends Controller
     public function getSearchUser($value){
         $users=User::where(function($q) use($value){
             return $q->where('username','like','%'.$value.'%');
-        })->latest()->get();//end of users obj
+        })->latest()->take(10)->get();//end of users obj
         if($value == '*.*'){
-            $users=User::latest()->get();
+           return redirect()->route('user.getUser');
         }
         return response()->json($users);
     }//end of getSearchUser

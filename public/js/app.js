@@ -2016,11 +2016,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       users: {},
-      last_page: null
+      last_page: null,
+      dontSearch: true
     };
   },
   //end of data
@@ -2049,7 +2052,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     searchValue: function searchValue(x) {
-      this.users = x;
+      if (x.data) {
+        //this section when the input for the search is empty
+        //will do redirect to all users and this page containe on pagination
+        this.users = x.data;
+        this.dontSearch = true;
+      } else {
+        this.users = x;
+        this.dontSearch = false;
+      }
     }
   } //end f watch
 
@@ -6511,7 +6522,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/* pagination */\n.page-item {\n  height: 50px;\n  display: flex;\n  justify-content: space-between;\n  /*  padding: 0px 10px 0px 10px; */\n  align-items: center;\n  background: #0d6efd;\n  border-radius: 4px;\n  color: white;\n  margin: auto;\n}\n.page-item .page-class {\n  width: 50px;\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 3px;\n}\n.page-item .page-class:not(:last-child) {\n  border-left: 1px solid;\n}\n.page-item .page-class .page-link-class {\n  text-decoration: none;\n  color: #fff;\n  word-spacing: 10px;\n}\n.page-item .active {\n  background: #b1aebf;\n}\n.page-item .prev-class, .page-item .next-class {\n  width: 50px;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.page-item .prev-class.disabled, .page-item .next-class.disabled {\n  display: none;\n}\n.page-item .next-class {\n  border-left: 1px solid;\n}\n\n/* /pagination */", ""]);
+exports.push([module.i, "/* pagination */\n.page-item {\n  height: 50px;\n  display: flex;\n  justify-content: space-between;\n  /*  padding: 0px 10px 0px 10px; */\n  align-items: center;\n  background: #0d6efd;\n  border-radius: 4px;\n  color: white;\n  margin: auto;\n}\n.page-item .page-class {\n  width: 50px;\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 3px;\n}\n.page-item .page-class:not(:last-child) {\n  border-left: 1px solid;\n}\n.page-item .page-class .page-link-class {\n  text-decoration: none;\n  color: #fff;\n  word-spacing: 10px;\n}\n.page-item .active {\n  background: #b1aebf;\n}\n.page-item .prev-class,\n.page-item .next-class {\n  width: 50px;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.page-item .prev-class.disabled,\n.page-item .next-class.disabled {\n  display: none;\n}\n.page-item .next-class {\n  border-left: 1px solid;\n}\n\n/* /pagination */", ""]);
 
 // exports
 
@@ -44585,20 +44596,22 @@ var render = function() {
         ]
       }),
       _vm._v(" "),
-      _c("paginate", {
-        attrs: {
-          "page-count": _vm.last_page,
-          "click-handler": _vm.getUser,
-          "prev-text": "Prev",
-          "page-range": 5,
-          "next-text": "Next",
-          "container-class": "page-item",
-          "page-class": "page-class",
-          "page-link-class": "page-link-class",
-          "prev-class": "prev-class",
-          "next-class": "next-class"
-        }
-      })
+      _vm.last_page > 1 && _vm.dontSearch
+        ? _c("paginate", {
+            attrs: {
+              "page-count": _vm.last_page,
+              "click-handler": _vm.getUser,
+              "prev-text": "Prev",
+              "page-range": 5,
+              "next-text": "Next",
+              "container-class": "page-item",
+              "page-class": "page-class",
+              "page-link-class": "page-link-class",
+              "prev-class": "prev-class",
+              "next-class": "next-class"
+            }
+          })
+        : _vm._e()
     ],
     1
   )

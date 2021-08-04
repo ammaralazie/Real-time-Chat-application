@@ -4,7 +4,7 @@
     height: 50px;
     display: flex;
     justify-content: space-between;
-   /*  padding: 0px 10px 0px 10px; */
+    /*  padding: 0px 10px 0px 10px; */
     align-items: center;
     background: rgb(13 110 253);
     border-radius: 4px;
@@ -20,7 +20,7 @@
         &:not(:last-child) {
             border-left: 1px solid;
         }
-        .page-link-class{
+        .page-link-class {
             text-decoration: none;
             color: #fff;
             word-spacing: 10px;
@@ -29,17 +29,18 @@
     .active {
         background: rgb(177 174 191);
     }
-    .prev-class,.next-class {
-         width: 50px;
-         height: 100%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
+    .prev-class,
+    .next-class {
+        width: 50px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         &.disabled {
             display: none;
         }
     }
-    .next-class{
+    .next-class {
         border-left: 1px solid;
     }
 }
@@ -74,7 +75,8 @@
         </ul>
         <div v-show="searchValue"></div>
         <paginate
-            :page-count=" last_page"
+            v-if="last_page > 1 && dontSearch"
+            :page-count="last_page"
             :click-handler="getUser"
             :prev-text="'Prev'"
             :page-range="5"
@@ -94,7 +96,8 @@ export default {
     data() {
         return {
             users: {},
-            last_page: null
+            last_page: null,
+            dontSearch: true
         };
     }, //end of data
     mounted() {
@@ -122,7 +125,15 @@ export default {
     },
     watch: {
         searchValue(x) {
-            this.users = x;
+            if (x.data) {
+                //this section when the input for the search is empty
+                //will do redirect to all users and this page containe on pagination
+                this.users = x.data;
+                this.dontSearch = true;
+            } else {
+                this.users = x;
+                this.dontSearch = false;
+            }
         }
     } //end f watch
 };
