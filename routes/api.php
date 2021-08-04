@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([],function () {
+    Route::post('signup', [UserController::class,'signup'])->name('user.signup');
+    Route::post('login', [UserController::class,'login'])->name('user.login');
+    Route::get('logout', [UserController::class,'logout'])->name('user.logout');
     Route::get('users', [UserController::class,'getUser'])->name('user.getUser');
     Route::get('users/getUser/{value}', [UserController::class,'getSearchUser'])->name('user.getSearchUser');
 });
