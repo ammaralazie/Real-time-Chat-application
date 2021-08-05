@@ -50,12 +50,11 @@
         .fa-eye{
             position: absolute;
             right: 55px;
-            top: 3px;
+            top: 22px;
             transform: translate(-122px,155px);
             cursor: pointer;
             color: rgb(49 49 49);
             @include ipad{
-                right: 70px;
                 transform: none;
                 transform: translateY(155px);
             }

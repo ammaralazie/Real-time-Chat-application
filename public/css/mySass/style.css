@@ -8,6 +8,10 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* end of ipad mixin */
 /* end of mobile */
 /* container */
@@ -89,14 +93,13 @@
 .login form[method=post] .fa-eye {
   position: absolute;
   right: 55px;
-  top: 3px;
+  top: 22px;
   transform: translate(-122px, 155px);
   cursor: pointer;
   color: #313131;
 }
 @media screen and (max-width: 1024px) {
   .login form[method=post] .fa-eye {
-    right: 70px;
     transform: none;
     transform: translateY(155px);
   }
