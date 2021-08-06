@@ -1979,15 +1979,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       x: "show",
       identfy: "",
-      password: ""
+      password: "",
+      payload: {},
+      err_tokn: ""
     };
   },
   //end data
+  computed: {
+    checkUsername: function checkUsername() {
+      if (this.identfy.length > 0 && this.identfy.length < 2) {
+        return "... must be more than 2 ";
+      }
+    },
+    //end of checkUsername
+    checkPassword: function checkPassword() {
+      if (this.password.length > 0 && this.password.length < 8) {
+        return "... must be more than 8 => " + this.password.length;
+      }
+    },
+    //end of checkPassword
+    isValid: function isValid() {
+      if (this.identfy.length > 0 && this.password.length > 0 && this.password.length >= 8) {
+        return "Ok";
+      }
+    },
+    //gkghkggjk
+    err_token: function err_token() {
+      this.err_tokn = this.$store.getters.checkErr;
+      return this.err_tokn;
+    } //end of  err_token
+
+  },
   methods: {
     showPssword: function showPssword() {
       var password = document.querySelector("input[name=password]");
@@ -2006,32 +2042,20 @@ __webpack_require__.r(__webpack_exports__);
     checkButton: function checkButton() {
       // convert to password and submit
       if (this.x != "show") {
+        var password = document.querySelector("input[name=password]");
         password.type = "password";
-        closest("form").submit();
       }
+
+      this.payload = {
+        identfy: this.identfy,
+        password: this.password
+      };
+      console.log(this.payload);
+      this.$store.dispatch("login", this.payload);
     } //end checkButton
 
-  },
-  //end methods
-  computed: {
-    checkUsername: function checkUsername() {
-      if (this.identfy.length > 0 && this.identfy.length < 2) {
-        return "... must be more than 2 ";
-      }
-    },
-    //end of checkUsername
-    checkPassword: function checkPassword() {
-      if (this.password.length > 0 && this.password.length < 8) {
-        return "... must be more than 8 => " + this.password.length;
-      }
-    },
-    //end of checkPassword
-    isValid: function isValid() {
-      if (this.identfy.length > 0 && this.password.length > 0 && this.password.length >= 8) {
-        return 'Ok';
-      }
-    }
-  }
+  } //end methods
+
 });
 
 /***/ }),
@@ -2089,17 +2113,68 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       username: "",
       email: "",
       password: "",
-      password_confirmation: ""
+      password_confirmation: "",
+      payload: {}
     };
   },
   //end of data
   computed: {
+    err_token: function err_token() {
+      console.log("work", this.err_tokn);
+      this.err_tokn = this.$store.getters.checkErr;
+      return this.err_tokn;
+    },
+    //end of  err_token
     checkUsername: function checkUsername() {
       if (this.username.length > 0 && this.username.length < 2) {
         return "... must be more than 2 => " + this.username.length;
@@ -2108,7 +2183,7 @@ __webpack_require__.r(__webpack_exports__);
     //end of checkUsername
     checkEmail: function checkEmail() {
       if (this.email.length > 0 && !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email)) {
-        return '... must like exmpale@exmaple.com';
+        return "... must like exmpale@exmaple.com";
       }
     },
     //end of checkEmail
@@ -2120,16 +2195,30 @@ __webpack_require__.r(__webpack_exports__);
     //end of checkPassword
     checkPasswordConfirmation: function checkPasswordConfirmation() {
       if (this.password != this.password_confirmation && this.password_confirmation.length > 0) {
-        return '... this password do not match';
+        return "... this password do not match";
       }
     },
     //end of checkPassordConfirmation
     isValid: function isValid() {
       if (this.username.length > 0 && this.username.length >= 2 && this.email.length > 0 && /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email) && this.password.length > 0 && this.password.length >= 8 && this.password == this.password_confirmation) {
-        return 'Ok';
+        return "Ok";
       }
+    } //end of isValid
+
+  },
+  //end of computed
+  methods: {
+    sendData: function sendData() {
+      this.payload = {
+        username: this.username,
+        email: this.email,
+        password: this.password,
+        password_confirmation: this.password_confirmation
+      };
+      this.$store.dispatch("signup", this.payload);
     }
-  }
+  } //end of methods
+
 });
 
 /***/ }),
@@ -44773,6 +44862,26 @@ var render = function() {
     _c("div", { staticClass: "wepper" }, [
       _c("div", { staticClass: "login" }, [
         _c("form", { attrs: { method: "post" } }, [
+          _c(
+            "p",
+            {
+              staticStyle: {
+                color: "rgb(173 25 25)",
+                "font-size": "10px",
+                height: "13px",
+                margin: "0px",
+                "text-align": "left"
+              }
+            },
+            [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.err_token) +
+                  "\n                "
+              )
+            ]
+          ),
+          _vm._v(" "),
           _c("input", {
             directives: [
               {
@@ -44849,7 +44958,12 @@ var render = function() {
             {
               staticClass: "button-form btn btn-primary",
               attrs: { disabled: !_vm.isValid, type: "submit" },
-              on: { click: _vm.checkButton }
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.checkButton.apply(null, arguments)
+                }
+              }
             },
             [_vm._v("\n                    Login\n                ")]
           )
@@ -44884,6 +44998,26 @@ var render = function() {
     _c("div", { staticClass: "wepper" }, [
       _c("div", { staticClass: "login" }, [
         _c("form", { attrs: { method: "post" } }, [
+          _c(
+            "p",
+            {
+              staticStyle: {
+                color: "rgb(173 25 25)",
+                "font-size": "10px",
+                height: "13px",
+                margin: "0px",
+                "text-align": "left"
+              }
+            },
+            [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.err_token) +
+                  "\n                "
+              )
+            ]
+          ),
+          _vm._v(" "),
           _c("input", {
             directives: [
               {
@@ -45020,9 +45154,15 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-primary",
-              attrs: { type: "submit", disabled: !_vm.isValid }
+              attrs: { type: "submit", disabled: !_vm.isValid },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.sendData.apply(null, arguments)
+                }
+              }
             },
-            [_vm._v("Sign Up")]
+            [_vm._v("\n                    Sign Up\n                ")]
           )
         ])
       ])
@@ -61831,7 +61971,8 @@ var app = new Vue({
   data: function data() {
     return {
       searchUser: "",
-      isSearching: false
+      isSearching: false,
+      user: []
     };
   },
   //end of data
@@ -61843,6 +61984,7 @@ var app = new Vue({
       profileList.classList.toggle("show-list");
     },
     showInputSearch: function showInputSearch() {
+      console.log('user :', this.user);
       var inputSearc = document.querySelector("input[type=search]");
       inputSearc.classList.toggle("showInputSearch");
       inputSearc.style.border = "1px solid #000";
@@ -61853,6 +61995,18 @@ var app = new Vue({
     findState: function findState() {
       console.log(localStorage.getItem('isSearching'));
       return localStorage.getItem('isSearching');
+    },
+    //we will make redrict after login or register
+    homeRedirect: function homeRedirect() {
+      if (this.$store.getters.checkToken) {
+        _routes_routes__WEBPACK_IMPORTED_MODULE_1__["default"].push('/');
+      }
+    },
+    //here we will return the information user from vuex file
+    users: function users() {
+      this.user = this.$store.state.auth_token;
+      console.log(this.user);
+      return this.user;
     }
   },
   watch: {
@@ -62263,7 +62417,9 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
-    searchValue: {}
+    searchValue: {},
+    auth_token: null,
+    err_token: null
   },
   //end of state
   getters: {
@@ -62273,7 +62429,17 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       }
 
       return false;
-    }
+    },
+    //end of checkSearch
+    //this section for token
+    checkToken: function checkToken(state) {
+      return !!state.auth_token;
+    },
+    //end of checktoken
+    checkErr: function checkErr(state) {
+      return state.err_token;
+    } //checkErr
+
   },
   //end of getters
   mutations: {
@@ -62281,28 +62447,87 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       state.searchValue = value.data;
 
       if (state.searchValue) {
-        localStorage.setItem('isSearching', false);
+        localStorage.setItem("isSearching", false);
       }
-    }
+    },
+    //end od setSearchValue
+    //this section for token
+    addToken: function addToken(state, auth_token) {
+      if (auth_token.auth_token.state == "200") {
+        state.auth_token = auth_token.auth_token;
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Authorization"] = auth_token.auth_token.token;
+      } else {
+        state.err_token = auth_token.auth_token.err;
+      }
+    },
+    //end of addToken
+    removeToken: function removeToken(state) {
+      state.auth_token = null;
+      delete axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Authorization"];
+    } //end of removeToken
+
   },
   //end of mutations
   actions: {
     seachVlue: lodash__WEBPACK_IMPORTED_MODULE_3___default.a.debounce(function (_ref, users) {
       var commit = _ref.commit;
 
-      if (users == '') {
+      if (users == "") {
         users = "*.*";
       }
 
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("api/users/getUser/" + users).then(function (res) {
-        localStorage.setItem('isSearching', true);
+        localStorage.setItem("isSearching", true);
         commit("setSearchValue", {
           data: res.data
         });
       })["catch"](function (err) {
         console.log(err);
       });
-    }, 1000) //end of debounce
+    }, 1000),
+    //end of debounce
+    //this secton for git tooken
+    signup: function signup(_ref2, payload) {
+      var commit = _ref2.commit;
+
+      if (payload) {
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/api/signup", payload).then(function (res) {
+          if (res) {
+            commit("addToken", {
+              auth_token: res.data
+            });
+          }
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      }
+    },
+    //end of addToken
+    login: function login(_ref3, payload) {
+      var commit = _ref3.commit;
+      console.log(payload);
+
+      if (payload) {
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/api/login", payload).then(function (res) {
+          if (res) {
+            commit("addToken", {
+              auth_token: res.data
+            });
+          }
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      }
+    },
+    //end of login
+    logout: function logout(_ref4) {
+      var commit = _ref4.commit;
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/logout').then(function (res) {
+        commit('removeToken');
+        console.log(res.data.data);
+        window.location.href = "/login";
+      });
+    } //end of logout
 
   } //end of actions
 

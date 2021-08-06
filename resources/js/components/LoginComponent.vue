@@ -7,6 +7,15 @@
             <div class="login">
                 <!-- form -->
                 <form method="post">
+                    <p
+                        style="color: rgb(173 25 25);
+                                font-size: 10px;
+                                height: 13px;
+                                margin: 0px;
+                                text-align: left;"
+                    >
+                        {{ err_token }}
+                    </p>
                     <input
                         type="text"
                         name="identfy"
@@ -37,7 +46,7 @@
                     <button
                         :disabled="!isValid"
                         class="button-form btn btn-primary"
-                        @click="checkButton"
+                        @click.prevent="checkButton"
                         type="submit"
                     >
                         Login
@@ -57,10 +66,39 @@ export default {
     data() {
         return {
             x: "show",
-            identfy:"",
-            password:""
+
+            identfy: "",
+            password: "",
+
+            payload: {},
+            err_tokn: ""
         };
     }, //end data
+    computed: {
+        checkUsername() {
+            if (this.identfy.length > 0 && this.identfy.length < 2) {
+                return "... must be more than 2 ";
+            }
+        }, //end of checkUsername
+
+        checkPassword() {
+            if (this.password.length > 0 && this.password.length < 8) {
+                return "... must be more than 8 => " + this.password.length;
+            }
+        }, //end of checkPassword
+        isValid() {
+            if (
+                this.identfy.length > 0 &&
+                this.password.length > 0 && this.password.length >= 8
+            ) {
+                return "Ok";
+            }
+        }, //gkghkggjk
+        err_token() {
+            this.err_tokn = this.$store.getters.checkErr;
+            return this.err_tokn;
+        } //end of  err_token
+    },
     methods: {
         showPssword() {
             var password = document.querySelector("input[name=password]");
@@ -75,37 +113,21 @@ export default {
             }
         }, //end of showPssword
 
-
         checkButton() {
             // convert to password and submit
 
             if (this.x != "show") {
+                var password = document.querySelector("input[name=password]");
                 password.type = "password";
-                closest("form").submit();
             }
+
+            this.payload = {
+                identfy: this.identfy,
+                password: this.password
+            };
+            console.log(this.payload);
+            this.$store.dispatch("login", this.payload);
         } //end checkButton
-    } ,//end methods
-    computed: {
-        checkUsername(){
-            if(this.identfy.length>0 && this.identfy.length<2){
-                return "... must be more than 2 ";
-            }
-        },//end of checkUsername
-
-
-        checkPassword(){
-            if (this.password.length>0 && this.password.length<8){
-                return "... must be more than 8 => "+this.password.length;
-            }
-        },//end of checkPassword
-        isValid(){
-            if(
-                (this.identfy.length>0 ) &&
-                (this.password.length>0 && this.password.length>=8)
-            ){
-                return 'Ok'
-            }
-        }
-    },
+    } //end methods
 };
 </script>

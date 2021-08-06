@@ -8,6 +8,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         searchValue: {},
+        auth_token: null,
+        err_token:null
     }, //end of state
     getters: {
         checkearch(state) {
@@ -15,34 +17,102 @@ const store = new Vuex.Store({
                 return state.searchValue;
             }
             return false;
-        }
+        }, //end of checkSearch
+
+        //this section for token
+        checkToken(state) {
+            return !!state.auth_token;
+        }, //end of checktoken
+
+        checkErr(state){
+            return state.err_token
+        },//checkErr
+
     }, //end of getters
     mutations: {
         setSearchValue(state, value) {
             state.searchValue = value.data;
-            if(state.searchValue){
-                localStorage.setItem('isSearching',false)
+            if (state.searchValue) {
+                localStorage.setItem("isSearching", false);
+            }
+        }, //end od setSearchValue
+
+        //this section for token
+        addToken(state, auth_token) {
+            if(auth_token.auth_token.state=="200"){
+                state.auth_token = auth_token.auth_token;
+                axios.defaults.headers.common["Authorization"] = auth_token.auth_token.token;
+            }else{
+                state.err_token=auth_token.auth_token.err;
             }
 
-        }
+        }, //end of addToken
+        removeToken(state) {
+            state.auth_token = null;
+            delete axios.defaults.headers.common["Authorization"];
+        } //end of removeToken
     }, //end of mutations
     actions: {
-        seachVlue:_.debounce(({ commit }, users)=> {
-
-            if(users==''){
-                users="*.*"
+        seachVlue: _.debounce(({ commit }, users) => {
+            if (users == "") {
+                users = "*.*";
             }
             axios
                 .get("api/users/getUser/" + users)
                 .then(res => {
-                    localStorage.setItem('isSearching',true)
+                    localStorage.setItem("isSearching", true);
                     commit("setSearchValue", { data: res.data });
-
                 })
                 .catch(err => {
                     console.log(err);
                 });
-        },1000)//end of debounce
+        }, 1000), //end of debounce
+
+        //this secton for git tooken
+        signup({ commit }, payload) {
+            if (payload) {
+                axios
+                    .post("/api/signup", payload)
+                    .then(res => {
+                        if (res) {
+                            commit("addToken", {
+                                auth_token: res.data
+                            });
+
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
+        } ,//end of addToken
+
+        login({commit},payload){
+            console.log(payload)
+            if(payload){
+                axios.post("/api/login",payload)
+                .then(res => {
+                    if (res) {
+                        commit("addToken", {
+                            auth_token: res.data
+                        });
+
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            }
+        },//end of login
+
+        logout({commit}){
+            axios.get('/api/logout')
+            .then(res=>{
+                commit('removeToken')
+                console.log(res.data.data)
+                window.location.href="/login"
+            })
+        },//end of logout
     } //end of actions
 }); //end of Vuex
 

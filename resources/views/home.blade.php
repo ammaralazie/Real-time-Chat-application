@@ -24,7 +24,7 @@
         <nav>
             <div class="wepper">
                 <div class="logo">
-                    <a href="">ChatApp</a>
+                    <router-link  to="/">ChatApp</router-link>
                 </div>
                 <ul class="main-list">
                     <li class="search-buuton">
@@ -44,15 +44,10 @@
                             <span>20</span>
                         </a>
                     </li>
-                    <div class="show-list-setting-profile">
-                        <router-link to="/login" custom><i class="far fa-user-alt"></i> Login</router-link>
-                    </div>
-                    <div class="show-list-setting-profile">
-                        <router-link to="/signup" custom><i class="far fa-user-alt"></i> Signup</router-link>
-                    </div>
-                    <li class="showList">
+
+                    <li v-if="users" class="showList">
                         <div class="show-list-setting-profile" @click="showList">
-                            <i class="far fa-user-alt"></i> User
+                            <i class="far fa-user-alt"></i> <p v-text="users.data.username" ></p>
                         </div>
 
                         <ul class="profile-list">
@@ -64,9 +59,19 @@
                             </li>
                         </ul>
                     </li>
+                    <li v-else>
+
+                        <div class="show-list-setting-profile">
+                            <router-link to="/login" custom><i class="far fa-user-alt"></i> Login</router-link>
+                        </div>
+                        <div class="show-list-setting-profile">
+                            <router-link to="/signup" custom><i class="far fa-user-alt"></i> Signup</router-link>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </nav>
+        <div  v-text="homeRedirect"></div>
         {{-- /navbar --}}
 
 

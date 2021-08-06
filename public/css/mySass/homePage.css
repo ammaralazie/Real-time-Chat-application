@@ -14,13 +14,14 @@ html {
 
 /* end of ipad mixin */
 /* end of mobile */
-nav .wepper .main-list .showList .profile-list li, nav .wepper .main-list .showList, nav .wepper .main-list, nav .wepper, nav {
+nav .wepper .main-list .showList .profile-list li, nav .wepper .main-list .showList .show-list-setting-profile, nav .wepper .main-list .showList, nav .wepper .main-list, nav .wepper, nav {
   display: flex;
   align-items: center;
 }
 
 /* nav */
 nav {
+  position: relative;
   width: 100%;
   height: 60px;
   box-shadow: 0 2px 3px #313131;
@@ -61,8 +62,8 @@ nav .wepper .main-list li {
   margin: 10px;
 }
 nav .wepper .main-list .num-messages {
-  font-size: 25px;
   position: relative;
+  font-size: 25px;
   margin-right: 30px;
 }
 nav .wepper .main-list .num-messages a {
@@ -81,7 +82,6 @@ nav .wepper .main-list .num-messages a span {
   background-color: #b32323;
 }
 nav .wepper .main-list .showList {
-  position: relative;
   justify-content: center;
   flex-direction: column;
   /* show-list-setting-profile */
@@ -90,16 +90,24 @@ nav .wepper .main-list .showList {
   /* /profile-list */
 }
 nav .wepper .main-list .showList .show-list-setting-profile {
-  padding: 10px;
+  padding: 8px;
   background: #3a3737;
   color: white;
   border-radius: 3px;
   cursor: pointer;
+  justify-content: center;
+}
+nav .wepper .main-list .showList .show-list-setting-profile i {
+  margin-right: 4px;
+}
+nav .wepper .main-list .showList .show-list-setting-profile p {
+  padding: 0px;
+  margin-bottom: 0px;
 }
 nav .wepper .main-list .showList .profile-list {
   position: absolute;
-  top: 54px;
-  left: 150px;
+  top: 5px;
+  left: 6500px;
   flex-direction: column;
   background-color: #eeeeee;
   box-shadow: -1px 2px 3px #313131;
@@ -111,7 +119,8 @@ nav .wepper .main-list .showList .profile-list {
   padding-left: 0px;
 }
 nav .wepper .main-list .showList .profile-list.show-list {
-  left: -90px;
+  left: 83%;
+  top: 65px;
 }
 nav .wepper .main-list .showList .profile-list li:not(last-child) {
   border-bottom: 1px solid #313131;
@@ -209,29 +218,33 @@ nav .wepper .main-list .search-buuton input[type=search]:focus {
 }
 
 /* /nav */
-/* UserComponent */
-.wepperUser {
+/* root user */
+.rootUser {
+  /* UserComponent */
+  /* /UserComponent */
+}
+.rootUser .wepperUser {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-top: 70px;
 }
 @media screen and (max-width: 1024px) {
-  .wepperUser {
+  .rootUser .wepperUser {
     grid-template-columns: 1fr 1fr 1fr;
     padding: 2px;
   }
 }
 @media screen and (max-width: 411px) {
-  .wepperUser {
+  .rootUser .wepperUser {
     grid-template-columns: 1fr;
   }
 }
-.wepperUser .cards {
+.rootUser .wepperUser .cards {
   padding: 10px;
   margin: 10px;
 }
 
-/* /UserComponent */
+/* /root user */
 
 /*# sourceMappingURL=homePage.css.map */

@@ -31,7 +31,8 @@ const app = new Vue({
     data() {
         return {
             searchUser: "",
-            isSearching:false
+            isSearching:false,
+            user:[]
         };
     }, //end of data
     store,
@@ -44,6 +45,7 @@ const app = new Vue({
             profileList.classList.toggle("show-list");
         },
         showInputSearch() {
+            console.log('user :',this.user)
             let inputSearc = document.querySelector("input[type=search]");
             inputSearc.classList.toggle("showInputSearch");
             inputSearc.style.border = "1px solid #000";
@@ -53,6 +55,20 @@ const app = new Vue({
         findState(){
             console.log(localStorage.getItem('isSearching'))
             return localStorage.getItem('isSearching')
+        },
+
+        //we will make redrict after login or register
+        homeRedirect(){
+            if(this.$store.getters.checkToken){
+                router.push('/')
+            }
+        },
+
+        //here we will return the information user from vuex file
+        users(){
+            this.user=this.$store.state.auth_token;
+            console.log(this.user)
+            return this.user
         }
     },
 

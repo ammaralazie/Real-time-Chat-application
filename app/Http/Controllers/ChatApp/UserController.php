@@ -46,7 +46,7 @@ class UserController extends Controller
                 'data' => null,
                 'state' => '404',
                 'err' => $vldate->errors()->first()
-            ], 404);
+            ]);
         }
 
         $user = User::create([
@@ -94,8 +94,9 @@ class UserController extends Controller
                 'data' => null,
                 'state' => '404',
                 'err' => $vldate->errors()->first()
-            ], 404);
+            ]);
         } //end of if
+
 
         if ($field == 'username') {
             $token = Auth::guard('api')->attempt( ['username' => $request->username,  'password' => $request->password]);
