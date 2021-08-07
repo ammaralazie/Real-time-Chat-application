@@ -52,6 +52,96 @@ nav{
          }
          /* /logo */
 
+         /* search-buuton */
+         .search-buuton{
+            /* position: relative; */
+            .search-icon{
+               font-size: 20px;
+               position: absolute;
+               top: 10px;
+               left:5px;
+            }
+            .search-animation{
+               width: 8%;
+               height: 96%;
+               top: 2px;
+               transition: all 1s ease-in-out;
+              animation: loopSearching 1s ease-in-out .3s infinite;
+               @include animationSearch(loopSearching);
+            }
+            input[type=search]{
+               width: 100%;
+               /* height: 100%; */
+               height: 33px;
+               border-radius: 4px;
+               box-shadow: 2px 3px 4px #313131;
+               text-align: center;
+               transition: all .1s ease;
+               float: right;
+               font-size: 18px;
+               color: $dark;
+               padding: 10px;
+               &:focus{
+                   width: 500px;
+                   height: 44px;
+                   border: 1px solid $dark;
+               }
+            }
+            @include ipad{
+               .search-icon {
+                   /* font-size: 20px; */
+                   position: absolute;
+                   top: 30%;
+                   left: 70%;
+                   font-weight: 700;
+                   font-size: 22px;
+                   width: 250px;
+                   transition: all 0.3s ease;
+
+               }
+               input[type=search]{
+                   transition: all 0.3s ease;
+                   position: absolute;
+                   top: -114px;
+                   z-index: 2;
+                   width: 200px;
+                   left: -114px;
+                   height: 42px;
+                   float: ceil($number: 4);
+
+                   &:focus{
+                       width: 260px;
+                       left: -124px;
+                       height: 42px;
+                       border: 1px solid $dark;
+                   }
+                   &.showInputSearch{
+                    top: 120%;
+                    left: 36%;
+                   }
+               }/* /input search */
+            }/* /ipad */
+
+            /* mobile */
+            @include mobile{
+                .search-icon{
+                    left: 40%
+                }
+                input[type=search]{
+                    &.showInputSearch{
+                        left: 20%;
+                        &:focus{
+                            left: 13%;
+                        }
+                    }
+                }
+
+            }
+            /* /mobile */
+
+        }
+        /* /search-buuton */
+
          /* main lisat */
          .main-list{
              @extend %flex;
@@ -141,77 +231,26 @@ nav{
                     }
                  }
                    /* /profile-list */
-             }
 
-             /* search-buuton */
-             .search-buuton{
-                 position: relative;
-                 .search-icon{
-                    font-size: 20px;
-                    position: absolute;
-                    top: 10px;
-                    left:5px;
-                 }
-                 .search-animation{
-                    width: 8%;
-                    height: 96%;
-                    top: 2px;
-                    transition: all 1s ease-in-out;
-                   animation: loopSearching 1s ease-in-out .3s infinite;
-                    @include animationSearch(loopSearching);
-                 }
-                 input[type=search]{
-                    width: 100%;
-                    /* height: 100%; */
-                    height: 33px;
-                    border-radius: 4px;
-                    box-shadow: 2px 3px 4px #313131;
-                    text-align: center;
-                    transition: all .1s ease;
-                    float: right;
-                    font-size: 18px;
-                    color: $dark;
-                    padding: 10px;
-                    &:focus{
-                        width: 500px;
-                        height: 44px;
-                        border: 1px solid $dark;
+                /* login and signup button */
+                .show-login{
+                    margin-top: 2px;
+                }
+                .show-login,.show-signup {
+                    min-width: 90px;
+                    padding: 2px;
+                    margin-bottom: 2px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: rgb(32 177 32);
+                    border-radius: 3px;
+                    a{
+                        text-decoration: none;
+                        color:rgb(212 222 232);
                     }
-                 }
-                 @include mobile{
-                    .search-icon {
-                        /* font-size: 20px; */
-                        position: absolute;
-                        top: -8px;
-                        left: -38px;
-                        font-weight: 700;
-                        font-size: 22px;
-                        width: 250px;
-                    }
-                    input[type=search]{
-                        transition: all 0.3s ease;
-                        position: absolute;
-                        top: -114px;
-                        z-index: 2;
-                        width: 200px;
-                        left: -114px;
-                        height: 42px;
-                        float: ceil($number: 4);
-                        &:focus{
-                            width: 260px;
-                            left: -124px;
-                            height: 42px;
-                            border: 1px solid $dark;
-                        }
-                        &.showInputSearch{
-                            top: 37px;
-                        }
-                    }/* /input search */
-                 }
-
+                }/* /end logon and signup */
              }
-             /* /search-buuton */
-
          }
          /* /main list */
 

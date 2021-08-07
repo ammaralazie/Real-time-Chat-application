@@ -26,17 +26,17 @@
                 <div class="logo">
                     <router-link  to="/">ChatApp</router-link>
                 </div>
+                <li class="search-buuton">
+                    <div v-if="isSearching == false">
+                        <i class="far fa-search search-icon" @click="showInputSearch"></i>
+                    </div>
+                    <div v-else>
+                        <img class="search-icon search-animation"
+                            src="{{ asset('media/searchAnimation/search.svg') }}" alt="">
+                    </div>
+                    <input type="search" v-model="searchUser">
+                </li>
                 <ul class="main-list">
-                    <li class="search-buuton">
-                        <div v-if="isSearching == false">
-                            <i class="far fa-search search-icon" @click="showInputSearch"></i>
-                        </div>
-                        <div v-else>
-                            <img class="search-icon search-animation"
-                                src="{{ asset('media/searchAnimation/search.svg') }}" alt="">
-                        </div>
-                        <input type="search" v-model="searchUser">
-                    </li>
 
                     <li class="num-messages">
                         <a href="">
@@ -59,13 +59,13 @@
                             </li>
                         </ul>
                     </li>
-                    <li v-else>
+                    <li v-else class="showList">
 
-                        <div class="show-list-setting-profile">
-                            <router-link to="/login" custom><i class="far fa-user-alt"></i> Login</router-link>
+                        <div class="show-login">
+                            <router-link to="/login" custom> Login</router-link>
                         </div>
-                        <div class="show-list-setting-profile">
-                            <router-link to="/signup" custom><i class="far fa-user-alt"></i> Signup</router-link>
+                        <div class="show-signup">
+                            <router-link to="/signup" custom>Signup</router-link>
                         </div>
                     </li>
                 </ul>
