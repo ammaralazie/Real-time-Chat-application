@@ -216,6 +216,16 @@ nav .wepper .main-list .showList .profile-list.show-list {
   left: 83%;
   top: 65px;
 }
+@media screen and (max-width: 1024px) {
+  nav .wepper .main-list .showList .profile-list.show-list {
+    left: 71%;
+  }
+}
+@media screen and (max-width: 411px) {
+  nav .wepper .main-list .showList .profile-list.show-list {
+    left: 45%;
+  }
+}
 nav .wepper .main-list .showList .profile-list li:not(last-child) {
   border-bottom: 1px solid #313131;
 }

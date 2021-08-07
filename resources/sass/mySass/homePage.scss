@@ -212,6 +212,16 @@ nav{
                         left: 83%;
                         top: 65px;
                     }
+                    @include ipad{
+                        &.show-list{
+                            left: 71%;
+                        }
+                    }
+                    @include mobile{
+                        &.show-list{
+                            left: 45%;
+                        }
+                    }
                     li:not(last-child){
                         border-bottom: 1px solid $dark;
                     }
