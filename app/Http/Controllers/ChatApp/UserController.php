@@ -126,16 +126,18 @@ class UserController extends Controller
 
     //this function to loguot user
     public function logout(Request $request){
-        $token=$request->header('auth-token');
+        $token=$request->header('auth_token');
+
         if($token){
             try{
-                JWTAuth::setToken($token)->invalidate();
+
+               $user= JWTAuth::setToken($token)->invalidate();
                 return response()->json([
                     'token' => 'invalidate token',
                     'data' => 'user was logout',
                     'state' => '200',
                     'err' =>null
-                ], 404);
+                ]);
             }catch(\Exception $e){
                 return response()->json
                 ([
@@ -159,7 +161,7 @@ class UserController extends Controller
     //this function to returen all user
     public function getUser()
     {
-        $obj = User::latest()->paginate(2);
+        $obj = User::latest()->paginate(8);
         return response()->json($obj);
     } //end of get User
 

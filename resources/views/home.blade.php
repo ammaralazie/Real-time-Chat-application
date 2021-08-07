@@ -52,7 +52,7 @@
 
                         <ul class="profile-list">
                             <li>
-                                <div class="logout"><a href="">Logout</a></div>
+                                <div class="logout" ><button @click.prevent="logout">Logout</button></div>
                             </li>
                             <li>
                                 <div class="update"><a href="">Update</a></div>

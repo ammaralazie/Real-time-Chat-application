@@ -41,7 +41,8 @@ const store = new Vuex.Store({
         addToken(state, auth_token) {
             if(auth_token.auth_token.state=="200"){
                 state.auth_token = auth_token.auth_token;
-                axios.defaults.headers.common["Authorization"] = auth_token.auth_token.token;
+                axios.defaults.headers.common.auth_token =auth_token.auth_token.token;
+               /*  axios.defaults.headers.common.Authorization = "Bearer"+auth_token.auth_token.token; */
             }else{
                 state.err_token=auth_token.auth_token.err;
             }
@@ -95,6 +96,7 @@ const store = new Vuex.Store({
                     if (res) {
                         commit("addToken", {
                             auth_token: res.data
+
                         });
 
                     }
@@ -106,11 +108,15 @@ const store = new Vuex.Store({
         },//end of login
 
         logout({commit}){
-            axios.get('/api/logout')
+            axios.get("/api/logout")
             .then(res=>{
+
+                console.log(res.data)
                 commit('removeToken')
-                console.log(res.data.data)
-                window.location.href="/login"
+                /* window.location.href="/login" */
+            })
+            .catch(err=>{
+                console.log(err)
             })
         },//end of logout
     } //end of actions

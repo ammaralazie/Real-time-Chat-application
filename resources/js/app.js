@@ -1,5 +1,6 @@
 require("./bootstrap");
 window.Vue = require("vue");
+import axios from 'axios';
 import Paginate from 'vuejs-paginate'
 const { default: Echo } = require("laravel-echo");
 
@@ -49,6 +50,12 @@ const app = new Vue({
             let inputSearc = document.querySelector("input[type=search]");
             inputSearc.classList.toggle("showInputSearch");
             inputSearc.style.border = "1px solid #000";
+        },
+        logout(){
+            if(this.$store.getters.checkToken){
+                this.$store.dispatch('logout')
+                router.push('/login')
+            }
         }
     }, //end of methods
     computed:{
