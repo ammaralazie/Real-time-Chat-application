@@ -112,7 +112,6 @@ nav .wepper .search-buuton input[type=search]:focus {
     left: 70%;
     font-weight: 700;
     font-size: 22px;
-    width: 250px;
     transition: all 0.3s ease;
   }
   nav .wepper .search-buuton input[type=search] {
