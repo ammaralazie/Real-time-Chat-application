@@ -2181,8 +2181,6 @@ __webpack_require__.r(__webpack_exports__);
       if (this.AuthUser) {
         console.log(this.AuthUser);
         axios.get("/api/messages-users").then(function (res) {
-          console.log(_this.AuthUser.data);
-          console.log(res.data.data);
           _this.users = res.data.data;
         })["catch"](function (err) {
           console.log(err);
@@ -2198,7 +2196,8 @@ __webpack_require__.r(__webpack_exports__);
       this.time = setInterval(function () {
         var date = new Date();
         var hur = date.getHours();
-        var sec = date.getSeconds();
+        /* var sec = date.getSeconds(); */
+
         var min = date.getMinutes();
 
         if (hur > 12) {
@@ -2212,22 +2211,8 @@ __webpack_require__.r(__webpack_exports__);
       }, 100);
     } //end of gettime
 
-  },
-  //end of methods
-  watch: {
-    getTime: function getTime() {
-      var date = new Date();
-      var hur = date.getHours();
-      var min = date.getMinutes();
-      var secd = date.getSeconds();
+  } //end of methods
 
-      if (hur > 12) {
-        this.time = hur + ":" + min + ":" + secd + " " + "PM";
-      } else {
-        this.time = hur + ":" + min + ":" + secd + " " + "AM";
-      }
-    }
-  }
 });
 
 /***/ }),
@@ -45228,17 +45213,19 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c("div", [
-          _c("img", { attrs: { src: _vm.AuthUser.data.img, alt: "" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "nick-name" }, [
-            _c("p", {
-              domProps: { textContent: _vm._s(_vm.AuthUser.data.username) }
-            }),
-            _vm._v(" "),
-            _vm._m(0)
-          ])
-        ])
+        _vm.AuthUser
+          ? _c("div", [
+              _c("img", { attrs: { src: _vm.AuthUser.data.img, alt: "" } }),
+              _vm._v(" "),
+              _c("div", { staticClass: "nick-name" }, [
+                _c("p", {
+                  domProps: { textContent: _vm._s(_vm.AuthUser.data.username) }
+                }),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ])
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("div", {
@@ -45248,10 +45235,10 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c(
-      "div",
+      "ul",
       { staticClass: "list-users" },
       _vm._l(_vm.users, function(user) {
-        return _c("div", { key: user.id }, [
+        return _c("li", { key: user.id }, [
           _c("form", { attrs: { id: "send_username", method: "post" } }, [
             _c("input", {
               attrs: {

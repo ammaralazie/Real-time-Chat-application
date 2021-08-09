@@ -23,7 +23,7 @@ p{
             <!-- left side -->
             <div class="left-side">
                 <i @click="$router.go(-1)" class="fas fa-arrow-left"></i>
-                <div>
+                <div v-if="AuthUser">
                     <img :src="AuthUser.data.img" alt="" />
                     <div class="nick-name">
                         <p v-text="AuthUser.data.username"></p>
@@ -39,9 +39,9 @@ p{
         <!-- //my icon -->
 
         <!-- liist user -->
-        <div class="list-users">
+        <ul class="list-users">
             <!-- card -->
-            <div v-for="user in users" :key="user.id">
+            <li v-for="user in users" :key="user.id">
                 <form id="send_username" method="post">
                     <!-- اهنا لازم نعطي username لكل مستخدم -->
                     <input type="hidden" value="user.username" name="username" />
@@ -77,11 +77,11 @@ p{
                         </a>
                     </button>
                 </form>
-            </div>
+            </li>
             <!-- //end of v-for  -->
 
             <!-- //card -->
-        </div>
+        </ul>
         <!-- //list user -->
         <div v-text="getTime"></div>
     </div>
@@ -109,8 +109,6 @@ export default {
                 axios
                     .get("/api/messages-users")
                     .then(res => {
-                        console.log(this.AuthUser.data);
-                        console.log(res.data.data);
                         this.users = res.data.data;
                     })
                     .catch(err => {
@@ -125,7 +123,7 @@ export default {
             this.time = setInterval(() => {
                 var date = new Date();
                 var hur = date.getHours();
-                var sec = date.getSeconds();
+                /* var sec = date.getSeconds(); */
                 var min = date.getMinutes();
                 if (hur > 12) {
                     this.time = hur + ":" + min + " PM";
@@ -138,18 +136,6 @@ export default {
         } //end of gettime
     }, //end of methods
 
-    watch: {
-        getTime() {
-            let date = new Date();
-            let hur = date.getHours();
-            let min = date.getMinutes();
-            let secd = date.getSeconds();
-            if (hur > 12) {
-                this.time = hur + ":" + min + ":" + secd + " " + "PM";
-            } else {
-                this.time = hur + ":" + min + ":" + secd + " " + "AM";
-            }
-        }
-    }
+
 };
 </script>
