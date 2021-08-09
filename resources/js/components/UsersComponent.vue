@@ -49,8 +49,8 @@
 </style>
 <template>
     <div class="rootUser" style="display:flex;flex-direction: column;">
-        <ul class="wepperUser">
-            <li class="cards" v-for="user in users" :key="user.id">
+        <ul class="wepperUser" v-if="users">
+            <li class="cards"  v-for="user in users" :key="user.id">
                 <div class="card card-margin">
                     <div class="card-header no-border">
                         <h5 class="card-title">{{ user.username }}</h5>

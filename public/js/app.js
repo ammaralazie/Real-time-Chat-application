@@ -45540,32 +45540,34 @@ var render = function() {
       staticStyle: { display: "flex", "flex-direction": "column" }
     },
     [
-      _c(
-        "ul",
-        { staticClass: "wepperUser" },
-        _vm._l(_vm.users, function(user) {
-          return _c("li", { key: user.id, staticClass: "cards" }, [
-            _c("div", { staticClass: "card card-margin" }, [
-              _c("div", { staticClass: "card-header no-border" }, [
-                _c("h5", { staticClass: "card-title" }, [
-                  _vm._v(_vm._s(user.username))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body pt-0" }, [
-                _c("div", { staticClass: "widget-49" }, [
-                  _c("img", { attrs: { src: user.img, alt: "" } }),
+      _vm.users
+        ? _c(
+            "ul",
+            { staticClass: "wepperUser" },
+            _vm._l(_vm.users, function(user) {
+              return _c("li", { key: user.id, staticClass: "cards" }, [
+                _c("div", { staticClass: "card card-margin" }, [
+                  _c("div", { staticClass: "card-header no-border" }, [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v(_vm._s(user.username))
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _c("hr"),
-                  _vm._v(" "),
-                  _vm._m(0, true)
+                  _c("div", { staticClass: "card-body pt-0" }, [
+                    _c("div", { staticClass: "widget-49" }, [
+                      _c("img", { attrs: { src: user.img, alt: "" } }),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _vm._m(0, true)
+                    ])
+                  ])
                 ])
               ])
-            ])
-          ])
-        }),
-        0
-      ),
+            }),
+            0
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c("div", {
         directives: [
