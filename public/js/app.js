@@ -2178,7 +2178,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (this.AuthUser) {
-        console.log(this.AuthUser);
         axios.get("/api/messages-users").then(function (res) {
           _this.users = res.data.data;
         })["catch"](function (err) {

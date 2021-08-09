@@ -105,7 +105,6 @@ export default {
     methods: {
         getMessagesUsers() {
             if (this.AuthUser) {
-                console.log(this.AuthUser);
                 axios
                     .get("/api/messages-users")
                     .then(res => {
