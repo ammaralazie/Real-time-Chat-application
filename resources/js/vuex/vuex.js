@@ -90,7 +90,6 @@ const store = new Vuex.Store({
         } ,//end of addToken
 
         login({commit},payload){
-            console.log(payload)
             if(payload){
                 axios.post("/api/login",payload)
                 .then(res => {
@@ -111,8 +110,6 @@ const store = new Vuex.Store({
         logout({commit}){
             axios.get("/api/logout")
             .then(res=>{
-
-                console.log(res.data)
                 commit('removeToken')
                 /* window.location.href="/login" */
             })

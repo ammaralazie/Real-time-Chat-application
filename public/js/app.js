@@ -2050,7 +2050,6 @@ __webpack_require__.r(__webpack_exports__);
         identfy: this.identfy,
         password: this.password
       };
-      console.log(this.payload);
       this.$store.dispatch("login", this.payload);
     } //end checkButton
 
@@ -62960,7 +62959,6 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     //end of addToken
     login: function login(_ref3, payload) {
       var commit = _ref3.commit;
-      console.log(payload);
 
       if (payload) {
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/api/login", payload).then(function (res) {
@@ -62978,7 +62976,6 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     logout: function logout(_ref4) {
       var commit = _ref4.commit;
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/logout").then(function (res) {
-        console.log(res.data);
         commit('removeToken');
         /* window.location.href="/login" */
       })["catch"](function (err) {

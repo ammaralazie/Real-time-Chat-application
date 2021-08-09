@@ -125,7 +125,6 @@ export default {
                 identfy: this.identfy,
                 password: this.password
             };
-            console.log(this.payload);
             this.$store.dispatch("login", this.payload);
         } //end checkButton
     } //end methods
