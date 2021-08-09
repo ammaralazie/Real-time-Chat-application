@@ -60,6 +60,7 @@ nav{
                position: absolute;
                top: 10px;
                left:5px;
+               display: none;
             }
             .search-animation{
                width: 8%;
@@ -96,6 +97,7 @@ nav{
                    font-weight: 700;
                    font-size: 22px;
                    transition: all 0.3s ease;
+                   display: inline-block;
 
                }
                input[type=search]{

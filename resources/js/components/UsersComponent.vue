@@ -10,6 +10,7 @@
     border-radius: 4px;
     color: rgb(255 255 255);
     margin: auto;
+    margin-bottom: 10px;
     .page-class {
         width: 50px;
         height: 100%;

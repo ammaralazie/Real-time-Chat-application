@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-    {{-- this for file for login and register --}}
+    {{-- this for login and register --}}
     <link rel="stylesheet" href="{{ asset('css/mySass/style.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/mySass/homePage.css') }}">
+
+    {{-- this for message  --}}
+    <link rel="stylesheet" href="{{asset('css/mySass/messages/style.css')}}">
     <title>ChatApp</title>
 </head>
 
@@ -34,15 +37,15 @@
                         <img class="search-icon search-animation"
                             src="{{ asset('media/searchAnimation/search.svg') }}" alt="">
                     </div>
-                    <input type="search" v-model="searchUser">
+                    <input type="search" placeholder="search ..." v-model="searchUser">
                 </li>
                 <ul class="main-list">
 
                     <li class="num-messages">
-                        <a href="">
+                        <router-link to="/messages-users">
                             <i class="far fa-envelope"></i>
                             <span>20</span>
-                        </a>
+                        </router-link>
                     </li>
 
                     <li v-if="users" class="showList">
@@ -72,6 +75,7 @@
             </div>
         </nav>
         <div  v-text="homeRedirect"></div>
+        <div v-text="loginRedirect"></div>
         {{-- /navbar --}}
 
 

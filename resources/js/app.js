@@ -33,7 +33,7 @@ const app = new Vue({
         return {
             searchUser: "",
             isSearching:false,
-            user:[]
+            user:[],
         };
     }, //end of data
     store,
@@ -70,6 +70,11 @@ const app = new Vue({
                 router.push('/')
             }
         },
+        loginRedirect(){
+            if(this.$store.state.redirect){
+                router.push(this.$store.state.redirect)
+            }//end of if
+        },//end of login redirect
 
         //here we will return the information user from vuex file
         users(){
@@ -85,6 +90,6 @@ const app = new Vue({
         },
         findState(x){
             this.isSearching=x
-        }
+        },
     } //end of watch
 });

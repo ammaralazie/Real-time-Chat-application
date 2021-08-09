@@ -13,16 +13,20 @@ use Validator;
 
 class ChatsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('global:api');
+    }
     public function messages_users()
     {
+
         try {
-            $authUser = Auth::user();
+            $authUser = Auth::guard('api')->user();
 
             //take my id which found in table create_recive_messages_table
             $users = User::whereHas('reciveUser', function ($q) use ($authUser) {
                 return $q->where('user_id', $authUser->id);
             })->get();
-
             $sndUsr = [];
             foreach ($users->first()->reciveUser as $item) {
                 $msg = Message::find($item->message_id);
@@ -43,10 +47,24 @@ class ChatsController extends Controller
             } //end of foreach item
             $sndUsr = array_reverse(array_filter($sndUsr));
 
-            return view('message.messages', compact('sndUsr'));
+            for ($i=0;$i<count($sndUsr);$i++){
+                $sndUsr[$i]->msg=Message::where('user_id',$sndUsr[$i]->id)->orderBy('created_at','desc')->first();
+            }//end of for loop
+
+            return response()->json([
+                'token' => null,
+                'data' => $sndUsr,
+                'state' => '200',
+                'err' => null
+            ]);
         } catch (\Exception $e) {
             $sndUsr = [];
-            return view('message.messages', compact('sndUsr'));
+            return response()->json([
+                'token' => null,
+                'data' => $sndUsr,
+                'state' => '210',
+                'err' => null
+            ]);
         }
     } //end of messages_users
 

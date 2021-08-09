@@ -9,7 +9,8 @@ const store = new Vuex.Store({
     state: {
         searchValue: {},
         auth_token: null,
-        err_token:null
+        err_token:null,
+        redirect:""
     }, //end of state
     getters: {
         checkearch(state) {

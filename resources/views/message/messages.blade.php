@@ -42,14 +42,14 @@
                         <div class="card">
                             <div class="icon-user">
                                 <img src="{{ $user->img }}" alt="">
-                                <div>
+                                <div> <p class="last-message" style="color:rgb(134, 132, 132) ">
+                                            {{ $user->messages->reverse()->first()->content }}
+                                        </p>
                                     <p class="username">
                                         {{ $user->username }}
                                     </p>
                                     @if ($user->messages->reverse()->first()->state == 1)
-                                        <p class="last-message" style="color:rgb(134, 132, 132) ">
-                                            {{ $user->messages->reverse()->first()->content }}
-                                        </p>
+
                                     @else
                                         <p class="last-message">
                                             <input type="hidden" name="state" value="1">
