@@ -6,6 +6,12 @@ p {
     margin: auto;
     width: 80%;
     margin-top: 70px;
+
+    @media screen and (max-width:"411px") {
+         margin-top: 0px;
+         width: 100%;
+         height: 100vh;
+    }
 }
 #a_submit {
     width: 100%;

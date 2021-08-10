@@ -2350,6 +2350,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7178,7 +7184,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "p[data-v-2626cdb6] {\n  margin-bottom: 0px;\n}\n.MessagesUsers[data-v-2626cdb6] {\n  margin: auto;\n  width: 80%;\n  margin-top: 70px;\n}\n#a_submit[data-v-2626cdb6] {\n  width: 100%;\n}\n.card[data-v-2626cdb6] {\n  display: flex;\n  justify-content: space-between;\n  flex-direction: row;\n}", ""]);
+exports.push([module.i, "p[data-v-2626cdb6] {\n  margin-bottom: 0px;\n}\n.MessagesUsers[data-v-2626cdb6] {\n  margin: auto;\n  width: 80%;\n  margin-top: 70px;\n}\n@media screen and (max-width: 411px) {\n.MessagesUsers[data-v-2626cdb6] {\n    margin-top: 0px;\n    width: 100%;\n    height: 100vh;\n}\n}\n#a_submit[data-v-2626cdb6] {\n  width: 100%;\n}\n.card[data-v-2626cdb6] {\n  display: flex;\n  justify-content: space-between;\n  flex-direction: row;\n}", ""]);
 
 // exports
 
