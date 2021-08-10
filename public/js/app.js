@@ -2120,16 +2120,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       AuthUsr: this.$store.state.auth_token,
-      info: []
+      info: null
     };
   },
   //end of data
   created: function created() {
-    this.sendTogetAllMessage(), this.processInfoMsg;
+    this.sendTogetAllMessage();
+    this.senMessageUser();
   },
   //end of created
   methods: {
@@ -2145,7 +2154,6 @@ __webpack_require__.r(__webpack_exports__);
             _this.info = res.data.data;
             var usrId = _this.AuthUsr.data.id;
             var obj2 = [];
-            console.log(_this.info);
             var recivephoto = _this.info.rcv_usr.img; //foreach to object and save messsage in array
 
             $.each(_this.info.all_msg, function (ky, value) {
@@ -2192,6 +2200,9 @@ __webpack_require__.r(__webpack_exports__);
 
             } //end of for i
 
+
+            var messageCover = document.getElementsByClassName("message-cover")[0];
+            messageCover.scrollTop = messageCover.scrollHeight;
           } //end of if
 
         }) //end of res
@@ -2201,7 +2212,34 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.$store.state.redirect = "/login";
       }
-    } //end of reciveAllMessage
+    },
+    //end of reciveAllMessage
+    senMessageUser: function senMessageUser() {
+      var frm = $("#data");
+
+      if (frm.serialize()) {
+        axios.post("/api/recive-message/", frm.serialize()).then(function (res) {
+          if (res) {
+            //show my message in container
+            var msg = document.querySelector("input[name=message]");
+            var myMessage = document.createElement("div");
+            myMessage.classList = "my-message";
+            var createP = document.createElement("p");
+            createP.textContent = msg.value;
+            myMessage.appendChild(createP);
+            var messageCover = document.getElementsByClassName("message-cover")[0];
+            messageCover.appendChild(myMessage);
+            msg.value = "";
+            var messageCover = document.getElementsByClassName("message-cover")[0];
+            messageCover.scrollTop = messageCover.scrollHeight; //end of show my message in container
+          } //end of response
+
+        })["catch"](function (err) {
+          return console.log(err);
+        }); //end of ajax
+      } //end of if frm
+
+    } //end of senMessageUser
 
   } //end of methods
 
@@ -2324,26 +2362,11 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.getMessagesUsers();
     this.getTime();
-    /*  setTimeout( this.getTime(),1000) */
   },
   //end of mounted
   methods: {
-    getMessagesUsers: function getMessagesUsers() {
-      var _this = this;
-
-      if (this.AuthUser) {
-        axios.get("/api/messages-users").then(function (res) {
-          _this.users = res.data.data;
-        })["catch"](function (err) {
-          console.log(err);
-        });
-      } else {
-        this.$store.state.redirect = "/login";
-      }
-    },
-    //end of getMessageUsers
     getTime: function getTime() {
-      var _this2 = this;
+      var _this = this;
 
       this.time = setInterval(function () {
         var date = new Date();
@@ -2353,15 +2376,29 @@ __webpack_require__.r(__webpack_exports__);
         var min = date.getMinutes();
 
         if (hur > 12) {
-          _this2.time = hur + ":" + min + " PM";
+          _this.time = hur + ":" + min + " PM";
         } else {
-          _this2.time = hur + ":" + min + " AM";
+          _this.time = hur + ":" + min + " AM";
         } //end of if
 
         /* console.log(x); */
 
       }, 100);
-    } //end of gettime
+    },
+    //end of gettime
+    getMessagesUsers: function getMessagesUsers() {
+      var _this2 = this;
+
+      if (this.AuthUser) {
+        axios.get("/api/messages-users").then(function (res) {
+          _this2.users = res.data.data;
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      } else {
+        this.$store.state.redirect = "/login";
+      }
+    } //end of getMessageUsers
 
   } //end of methods
 
@@ -45494,10 +45531,17 @@ var render = function() {
   return _c("div", { staticClass: "MessageUser" }, [
     _vm._m(0),
     _vm._v(" "),
-    _vm.info
-      ? _c("div", { staticClass: "consignee" }, [
-          _c("div", { staticClass: "contente-users" }, [
-            _c("i", { staticClass: "fas fa-arrow-left" }),
+    _c("div", { staticClass: "consignee" }, [
+      _vm.info
+        ? _c("div", { staticClass: "contente-users" }, [
+            _c("i", {
+              staticClass: "fas fa-arrow-left",
+              on: {
+                click: function($event) {
+                  return _vm.$router.go(-1)
+                }
+              }
+            }),
             _vm._v(" "),
             _c("div", [
               _c("img", { attrs: { src: _vm.info.rcv_usr.img, alt: "" } }),
@@ -45508,13 +45552,81 @@ var render = function() {
                 })
               ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "message-cover" }),
-          _vm._v(" "),
-          _vm._m(1)
-        ])
-      : _vm._e()
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "message-cover" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-message" }, [
+        _vm.info
+          ? _c("form", { attrs: { id: "data" } }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.AuthUsr.data.id,
+                    expression: "AuthUsr.data.id"
+                  }
+                ],
+                attrs: { type: "hidden", name: "sendUsr" },
+                domProps: { value: _vm.AuthUsr.data.id },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.AuthUsr.data, "id", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.info.rcv_usr.id,
+                    expression: "info.rcv_usr.id"
+                  }
+                ],
+                attrs: { type: "hidden", name: "reciveUsr" },
+                domProps: { value: _vm.info.rcv_usr.id },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.info.rcv_usr, "id", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: {
+                  type: "text",
+                  name: "message",
+                  placeholder: "your message ..."
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  attrs: { id: "send" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.senMessageUser.apply(null, arguments)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-paper-plane" })]
+              )
+            ])
+          : _vm._e()
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -45524,34 +45636,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "background_image" }, [
       _c("img", { attrs: { src: "/media/backgroundMessage/1.jpg", alt: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-message" }, [
-      _c("form", { attrs: { id: "data" } }, [
-        _c("input", {
-          attrs: { type: "hidden", name: "sendUsr", value: "AuthUsr.id" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "hidden", name: "reciveUsr", value: "" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: {
-            type: "text",
-            name: "message",
-            placeholder: "your message ..."
-          }
-        }),
-        _vm._v(" "),
-        _c("button", { attrs: { id: "send" } }, [
-          _c("i", { staticClass: "fas fa-paper-plane" })
-        ])
-      ])
     ])
   }
 ]

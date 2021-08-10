@@ -101,12 +101,29 @@ export default {
             time: ""
         };
     }, //end of data
+
     created() {
         this.getMessagesUsers();
         this.getTime();
-        /*  setTimeout( this.getTime(),1000) */
     }, //end of mounted
+
     methods: {
+        getTime() {
+            this.time = setInterval(() => {
+                var date = new Date();
+                var hur = date.getHours();
+                /* var sec = date.getSeconds(); */
+                var min = date.getMinutes();
+                if (hur > 12) {
+                    this.time = hur + ":" + min + " PM";
+                } else {
+                    this.time = hur + ":" + min + " AM";
+                } //end of if
+
+                /* console.log(x); */
+            }, 100);
+        }, //end of gettime
+
         getMessagesUsers() {
             if (this.AuthUser) {
                 axios
@@ -122,21 +139,7 @@ export default {
             }
         }, //end of getMessageUsers
 
-        getTime() {
-            this.time = setInterval(() => {
-                var date = new Date();
-                var hur = date.getHours();
-                /* var sec = date.getSeconds(); */
-                var min = date.getMinutes();
-                if (hur > 12) {
-                    this.time = hur + ":" + min + " PM";
-                } else {
-                    this.time = hur + ":" + min + " AM";
-                } //end of if
 
-                /* console.log(x); */
-            }, 100);
-        } //end of gettime
     } //end of methods
 };
 </script>

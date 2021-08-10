@@ -28,4 +28,5 @@ Route::group([],function () {
     //Chats Controller
     Route::get('messages-users',[ChatsController::class,'messages_users'])->name('users.messages');
     Route::post('message/',[ChatsController::class,'message_user'])->name('user.message');
+    Route::post('recive-message/',[ChatsController::class,'recive_message'])->name('user.recive');
 });
