@@ -36,7 +36,7 @@
         width: 100%;
     ">
         {{-- navbar --}}
-        <nav>
+        <nav >
             <div class="wepper">
                 <div class="logo">
                     <router-link to="/">ChatApp</router-link>
@@ -89,6 +89,7 @@
         </nav>
         <div v-text="homeRedirect"></div>
         <div v-text="loginRedirect"></div>
+        <div v-text="hideNavBar"></div>
         {{-- /navbar --}}
 
 

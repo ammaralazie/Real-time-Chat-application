@@ -62814,6 +62814,16 @@ var app = new Vue({
       console.log(localStorage.getItem('isSearching'));
       return localStorage.getItem('isSearching');
     },
+    hideNavBar: function hideNavBar() {
+      var navBar = document.querySelector("nav"); //this section for check to url and then hidden the navbar
+
+      if ((this.$route.fullPath == "/messages-users" || this.$route.fullPath == "/message/" + this.$route.params.username) && window.innerWidth < 700) {
+        navBar.style.display = "none";
+      } else {
+        navBar.style.display = "inline-block";
+      }
+    },
+    //end of  hideNavBar
     //we will make redrict after login or register
     homeRedirect: function homeRedirect() {
       if (this.$store.getters.checkToken) {
