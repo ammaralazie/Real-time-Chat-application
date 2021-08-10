@@ -47,9 +47,9 @@ class ChatsController extends Controller
             } //end of foreach item
             $sndUsr = array_reverse(array_filter($sndUsr));
 
-            for ($i=0;$i<count($sndUsr);$i++){
-                $sndUsr[$i]->msg=Message::where('user_id',$sndUsr[$i]->id)->orderBy('created_at','desc')->first();
-            }//end of for loop
+            for ($i = 0; $i < count($sndUsr); $i++) {
+                $sndUsr[$i]->msg = Message::where('user_id', $sndUsr[$i]->id)->orderBy('created_at', 'desc')->first();
+            } //end of for loop
 
             return response()->json([
                 'token' => null,
@@ -69,17 +69,19 @@ class ChatsController extends Controller
     } //end of messages_users
 
 
+    //this function only for display message betwween two users
     public function message_user(Request $request)
     {
 
-
+        //find recive user
         $usr_id = User::where('username', $request->username)->first();
         $recive_usr = ReciveMessage::where('user_id', $usr_id->id)->get();
+        $authUser = Auth::guard('api')->user();
         $all_msg = [];
         //this section for meesage reciveing by username
         foreach ($recive_usr as $key => $item) {
             $snd_usr = User::find(Message::find($item->message_id)->user_id);
-            if ($snd_usr == auth()->user()) {
+            if ($snd_usr == $authUser) {
                 $all_msg[$key] = Message::where('id', $item->message_id)->get();
             } //end of if
         } //end of foreach
@@ -99,12 +101,16 @@ class ChatsController extends Controller
 
         $all_msg = (object)array_reverse($all_msg);;
 
-
-        return view('message.my_you', compact('all_msg', 'usr_id'));
-
-        if($request){
-            return response()->json(['msg'=>'data was submites']);
-        }
+        return response()->json([
+            'token' => null,
+            'data' =>[
+                'all_msg'=>$all_msg,
+                'rcv_usr'=>$usr_id,
+                'bgimg'=>public_path('media/backgroundMessage/1.png')
+            ],
+            'state' => '210',
+            'err' => null
+        ]);
     } //end of message_user
 
     public function recive_message(Request $request)
@@ -140,7 +146,7 @@ class ChatsController extends Controller
             } //end of if
 
             //make event to ChatEvent
-            event(new ChatEvent($createMsg->content,$sndUsr->id ,$recv->user_id));
+            event(new ChatEvent($createMsg->content, $sndUsr->id, $recv->user_id));
 
             return response()->json(['msg' => 'successfly']);
         } else {

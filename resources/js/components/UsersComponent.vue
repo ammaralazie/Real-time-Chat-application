@@ -50,7 +50,7 @@
 <template>
     <div class="rootUser" style="display:flex;flex-direction: column;">
         <ul class="wepperUser" v-if="users">
-            <li class="cards"  v-for="user in users" :key="user.id">
+            <li class="cards" v-for="user in users" :key="user.id">
                 <div class="card card-margin">
                     <div class="card-header no-border">
                         <h5 class="card-title">{{ user.username }}</h5>
@@ -63,11 +63,13 @@
                                 class="widget-49-meeting-action"
                                 style="    transform: translateX(30px);"
                             >
-                                <a href="#" class="btn btn-sm btn-primary"
+                                <router-link
+                                    :to="'message/'+ user.username"
+                                    class="btn btn-sm btn-primary"
                                     >Send message
                                     <img
                                         src="https://img.icons8.com/ios-glyphs/30/000000/filled-sent.png"
-                                /></a>
+                                /></router-link>
                             </div>
                         </div>
                     </div>

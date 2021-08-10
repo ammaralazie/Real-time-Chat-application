@@ -14,20 +14,32 @@
 
     <link rel="stylesheet" href="{{ asset('css/mySass/homePage.css') }}">
 
-    {{-- this for message  --}}
-    <link rel="stylesheet" href="{{asset('css/mySass/messages/style.css')}}">
+    {{-- this for message --}}
+    <link rel="stylesheet" href="{{ asset('css/mySass/messages/style.css') }}">
+
+    {{-- this link for window send and recive mesage --}}
+    <link rel="stylesheet" href="{{ asset('css/mySass/my_you/my_you.css') }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
     <title>ChatApp</title>
 </head>
 
 <body>
 
     {{-- app root --}}
-    <div class="" id="app">
+    <div class="" id="app" style="
+        height: 100vh;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    ">
         {{-- navbar --}}
         <nav>
             <div class="wepper">
                 <div class="logo">
-                    <router-link  to="/">ChatApp</router-link>
+                    <router-link to="/">ChatApp</router-link>
                 </div>
                 <li class="search-buuton">
                     <div v-if="isSearching == false">
@@ -50,12 +62,13 @@
 
                     <li v-if="users" class="showList">
                         <div class="show-list-setting-profile" @click="showList">
-                            <i class="far fa-user-alt"></i> <p v-text="users.data.username" ></p>
+                            <i class="far fa-user-alt"></i>
+                            <p v-text="users.data.username"></p>
                         </div>
 
                         <ul class="profile-list">
                             <li>
-                                <div class="logout" ><button @click.prevent="logout">Logout</button></div>
+                                <div class="logout"><button @click.prevent="logout">Logout</button></div>
                             </li>
                             <li>
                                 <div class="update"><a href="">Update</a></div>
@@ -74,7 +87,7 @@
                 </ul>
             </div>
         </nav>
-        <div  v-text="homeRedirect"></div>
+        <div v-text="homeRedirect"></div>
         <div v-text="loginRedirect"></div>
         {{-- /navbar --}}
 

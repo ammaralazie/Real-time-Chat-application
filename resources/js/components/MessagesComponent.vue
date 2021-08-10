@@ -1,5 +1,5 @@
 <style lang="scss" scoped>
-p{
+p {
     margin-bottom: 0px;
 }
 .MessagesUsers {
@@ -7,10 +7,10 @@ p{
     width: 80%;
     margin-top: 70px;
 }
-#a_submit{
+#a_submit {
     width: 100%;
 }
-.card{
+.card {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -39,26 +39,30 @@ p{
         <!-- //my icon -->
 
         <!-- liist user -->
-        <ul class="list-users">
+        <ul class="list-users" v-if="users">
             <!-- card -->
             <li v-for="user in users" :key="user.id">
                 <form id="send_username" method="post">
                     <!-- اهنا لازم نعطي username لكل مستخدم -->
-                    <input type="hidden" value="user.username" name="username" />
+                    <input
+                        type="hidden"
+                        value="user.username"
+                        name="username"
+                    />
                     <button id="a_submit">
-                        <a>
+                        <router-link :to="'message/' + user.username">
                             <div class="card">
                                 <div class="icon-user">
                                     <img :src="user.img" alt="" />
                                     <div>
                                         <p class="username">
-                                            {{user.username}}
+                                            {{ user.username }}
                                         </p>
                                         <p
                                             class="last-message"
                                             style="color:rgb(134, 132, 132) "
                                         >
-                                            {{user.msg.content}}
+                                            {{ user.msg.content }}
                                         </p>
                                         <p class="last-message">
                                             <input
@@ -74,7 +78,7 @@ p{
                                     <span></span>
                                 </div>
                             </div>
-                        </a>
+                        </router-link>
                     </button>
                 </form>
             </li>
@@ -133,8 +137,6 @@ export default {
                 /* console.log(x); */
             }, 100);
         } //end of gettime
-    }, //end of methods
-
-
+    } //end of methods
 };
 </script>

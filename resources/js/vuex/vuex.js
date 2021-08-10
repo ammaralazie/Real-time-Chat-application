@@ -10,7 +10,7 @@ const store = new Vuex.Store({
         searchValue: {},
         auth_token: null,
         err_token:null,
-        redirect:""
+        redirect:"",
     }, //end of state
     getters: {
         checkearch(state) {
@@ -27,7 +27,7 @@ const store = new Vuex.Store({
 
         checkErr(state){
             return state.err_token
-        },//checkErr
+        },//end of checkErr
 
     }, //end of getters
     mutations: {
@@ -36,7 +36,7 @@ const store = new Vuex.Store({
             if (state.searchValue) {
                 localStorage.setItem("isSearching", false);
             }
-        }, //end od setSearchValue
+        }, //end of setSearchValue
 
         //this section for token
         addToken(state, auth_token) {
@@ -52,7 +52,8 @@ const store = new Vuex.Store({
         removeToken(state) {
             state.auth_token = null;
             delete axios.defaults.headers.common["Authorization"];
-        } //end of removeToken
+        }, //end of removeToken
+
     }, //end of mutations
     actions: {
         seachVlue: _.debounce(({ commit }, users) => {
@@ -117,6 +118,7 @@ const store = new Vuex.Store({
                 console.log(err)
             })
         },//end of logout
+
     } //end of actions
 }); //end of Vuex
 

@@ -79,7 +79,6 @@ const app = new Vue({
         //here we will return the information user from vuex file
         users(){
             this.user=this.$store.state.auth_token;
-            console.log(this.user)
             return this.user
         }
     },
