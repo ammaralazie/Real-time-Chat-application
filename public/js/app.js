@@ -45564,73 +45564,71 @@ var render = function() {
       _c("div", { staticClass: "message-cover" }),
       _vm._v(" "),
       _c("div", { staticClass: "form-message" }, [
-        _vm.info
-          ? _c("form", { attrs: { method: "post", action: "", id: "data" } }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.AuthUsr.data.id,
-                    expression: "AuthUsr.data.id"
-                  }
-                ],
-                attrs: { type: "hidden", name: "sendUsr" },
-                domProps: { value: _vm.AuthUsr.data.id },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.AuthUsr.data, "id", $event.target.value)
-                  }
+        _c("form", { attrs: { method: "post", action: "", id: "data" } }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.AuthUsr.data.id,
+                expression: "AuthUsr.data.id"
+              }
+            ],
+            attrs: { type: "hidden", name: "sendUsr" },
+            domProps: { value: _vm.AuthUsr.data.id },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
                 }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.info.rcv_usr.id,
-                    expression: "info.rcv_usr.id"
-                  }
-                ],
-                attrs: { type: "hidden", name: "reciveUsr" },
-                domProps: { value: _vm.info.rcv_usr.id },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.info.rcv_usr, "id", $event.target.value)
-                  }
+                _vm.$set(_vm.AuthUsr.data, "id", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.info.rcv_usr.id,
+                expression: "info.rcv_usr.id"
+              }
+            ],
+            attrs: { type: "hidden", name: "reciveUsr" },
+            domProps: { value: _vm.info.rcv_usr.id },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
                 }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                attrs: {
-                  type: "text",
-                  name: "message",
-                  placeholder: "your message ..."
+                _vm.$set(_vm.info.rcv_usr, "id", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "text",
+              name: "message",
+              placeholder: "your message ..."
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              attrs: { id: "send" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.senMessageUser.apply(null, arguments)
                 }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  attrs: { id: "send" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.senMessageUser.apply(null, arguments)
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "fas fa-paper-plane" })]
-              )
-            ])
-          : _vm._e()
+              }
+            },
+            [_c("i", { staticClass: "fas fa-paper-plane" })]
+          )
+        ])
       ])
     ])
   ])
