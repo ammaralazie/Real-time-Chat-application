@@ -45565,7 +45565,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "form-message" }, [
         _vm.info
-          ? _c("form", { attrs: { id: "data" } }, [
+          ? _c("form", { attrs: { method: "post", action: "", id: "data" } }, [
               _c("input", {
                 directives: [
                   {

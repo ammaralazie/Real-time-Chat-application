@@ -27,7 +27,7 @@
 
             <!-- form message -->
             <div class="form-message">
-                <form id="data" v-if="info">
+                <form method="post" action="" id="data" v-if="info">
                     <input
                         type="hidden"
                         name="sendUsr"
