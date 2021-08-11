@@ -2219,21 +2219,18 @@ __webpack_require__.r(__webpack_exports__);
 
       if (frm.serialize()) {
         axios.post("/api/recive-message/", frm.serialize()).then(function (res) {
-          if (res) {
-            //show my message in container
-            var msg = document.querySelector("input[name=message]");
-            var myMessage = document.createElement("div");
-            myMessage.classList = "my-message";
-            var createP = document.createElement("p");
-            createP.textContent = msg.value;
-            myMessage.appendChild(createP);
-            var messageCover = document.getElementsByClassName("message-cover")[0];
-            messageCover.appendChild(myMessage);
-            msg.value = "";
-            var messageCover = document.getElementsByClassName("message-cover")[0];
-            messageCover.scrollTop = messageCover.scrollHeight; //end of show my message in container
-          } //end of response
-
+          //show my message in container
+          var msg = document.querySelector("input[name=message]");
+          var myMessage = document.createElement("div");
+          myMessage.classList = "my-message";
+          var createP = document.createElement("p");
+          createP.textContent = msg.value;
+          myMessage.appendChild(createP);
+          var messageCover = document.getElementsByClassName("message-cover")[0];
+          messageCover.appendChild(myMessage);
+          msg.value = "";
+          var messageCover = document.getElementsByClassName("message-cover")[0];
+          messageCover.scrollTop = messageCover.scrollHeight; //end of show my message in container
         })["catch"](function (err) {
           return console.log(err);
         }); //end of ajax

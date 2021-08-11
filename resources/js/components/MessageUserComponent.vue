@@ -167,7 +167,6 @@ export default {
                 axios
                     .post("/api/recive-message/", frm.serialize())
                     .then(res => {
-                        if (res) {
                             //show my message in container
                             let msg = document.querySelector(
                                 "input[name=message]"
@@ -189,7 +188,6 @@ export default {
                             messageCover.scrollTop = messageCover.scrollHeight;
                             //end of show my message in container
 
-                        } //end of response
                     })
                     .catch(err => console.log(err)); //end of ajax
             } //end of if frm
