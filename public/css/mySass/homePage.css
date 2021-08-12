@@ -257,10 +257,18 @@ nav .wepper .main-list .showList .show-login, nav .wepper .main-list .showList .
   align-items: center;
   background: #20b120;
   border-radius: 3px;
+  font-size: 15px;
 }
 nav .wepper .main-list .showList .show-login a, nav .wepper .main-list .showList .show-signup a {
   text-decoration: none;
   color: #d4dee8;
+  transition: color 0.3s ease;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+nav .wepper .main-list .showList .show-login:hover a, nav .wepper .main-list .showList .show-signup:hover a {
+  color: #fff;
 }
 
 /* /nav */
