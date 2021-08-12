@@ -178,6 +178,8 @@ nav .wepper .main-list .num-messages a span {
 nav .wepper .main-list .showList {
   justify-content: center;
   flex-direction: column;
+  margin: 0px;
+  margin-top: 4px;
   /* show-list-setting-profile */
   /* /show-list-setting-profile */
   /* profile-list */
