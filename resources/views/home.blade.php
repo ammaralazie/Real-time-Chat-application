@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="{{ asset('css/mySass/my_you/my_you.css') }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- this file for loading animation --}}
+    <link rel="stylesheet" href="{{ asset('css/mySass/loading/loading.css') }}">
+
 
     <title>ChatApp</title>
 </head>
@@ -35,8 +38,22 @@
         justify-content: center;
         width: 100%;
     ">
+        <!-- loading animation  -->
+        <main v-if="loading">
+            <div class="loadingstyle">
+                <div class="preloader">
+                    <div class="preloader__square"></div>
+                    <div class="preloader__square"></div>
+                    <div class="preloader__square"></div>
+                    <div class="preloader__square"></div>
+                </div>
+                <div class="status">Loading<span class="status__dot">.</span><span class="status__dot">.</span><span
+                        class="status__dot">.</span></div>
+            </div>
+        </main>
+        <!-- //loading animation  -->
         {{-- navbar --}}
-        <nav >
+        <nav>
             <div class="wepper">
                 <div class="logo">
                     <router-link to="/">ChatApp</router-link>
@@ -45,10 +62,10 @@
                     <div v-if="isSearching == false">
                         <i class="far fa-search search-icon" @click="showInputSearch"></i>
                     </div>
-                    <div v-else>
+                    {{-- <div v-else>
                         <img class="search-icon search-animation"
                             src="{{ asset('media/searchAnimation/search.svg') }}" alt="">
-                    </div>
+                    </div> --}}
                     <input type="search" placeholder="search ..." v-model="searchUser">
                 </li>
                 <ul class="main-list">

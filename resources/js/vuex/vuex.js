@@ -42,6 +42,7 @@ const store = new Vuex.Store({
         addToken(state, auth_token) {
             if(auth_token.auth_token.state=="200"){
                 state.auth_token = auth_token.auth_token;
+                axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
                 axios.defaults.headers.common.auth_token =auth_token.auth_token.token;
                /*  axios.defaults.headers.common.Authorization = "Bearer"+auth_token.auth_token.token; */
             }else{

@@ -3,16 +3,7 @@ window.Vue = require("vue");
 import axios from 'axios';
 import Paginate from 'vuejs-paginate'
 const { default: Echo } = require("laravel-echo");
-
 require("./bootstrap");
-window.Echo.private(
-    "chat-prvate." +
-        localStorage.getItem("sndUsr") +
-        "." +
-        localStorage.getItem("rcvUsr")
-).listen(".chat-p", e => {
-    console.log(e);
-});
 
 Vue.component(
     "global-home",
@@ -25,6 +16,19 @@ Vue.component(
 
 Vue.component('paginate', Paginate)
 
+window.Echo.private(
+    "chat-prvate." +
+        localStorage.getItem("sndUsr") +
+        "." +
+        localStorage.getItem("rcvUsr")
+
+).listen(".chat-p", e => {
+    console.log(localStorage.getItem("sndUsr")," : ", localStorage.getItem("rcvUsr"))
+    console.log(e);
+});
+
+
+
 import router from "./routes/routes";
 import store from "./vuex/vuex";
 const app = new Vue({
@@ -36,6 +40,7 @@ const app = new Vue({
             user:[],
         };
     }, //end of data
+    props:['loading'],
     store,
     router,
     methods: {

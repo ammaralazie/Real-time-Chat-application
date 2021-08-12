@@ -82,6 +82,7 @@ export default {
                     .then(res => {
                         if (res.data.data) {
                             this.info = res.data.data;
+
                             let usrId = this.AuthUsr.data.id;
                             let obj2 = [];
                             let recivephoto = this.info.rcv_usr.img;
@@ -164,30 +165,30 @@ export default {
         senMessageUser() {
             var frm = $("#data");
             if (frm.serialize()) {
+                localStorage.setItem("sndUsr", this.AuthUsr.data.id);
+                localStorage.setItem("rcvUsr", this.info.rcv_usr.id);
+
                 axios
                     .post("/api/recive-message/", frm.serialize())
                     .then(res => {
-                            //show my message in container
-                            let msg = document.querySelector(
-                                "input[name=message]"
-                            );
-                            var myMessage = document.createElement("div");
-                            myMessage.classList = "my-message";
-                            var createP = document.createElement("p");
-                            createP.textContent = msg.value;
-                            myMessage.appendChild(createP);
+                        //show my message in container
+                        let msg = document.querySelector("input[name=message]");
+                        var myMessage = document.createElement("div");
+                        myMessage.classList = "my-message";
+                        var createP = document.createElement("p");
+                        createP.textContent = msg.value;
+                        myMessage.appendChild(createP);
 
-                            var messageCover = document.getElementsByClassName(
-                                "message-cover"
-                            )[0];
-                            messageCover.appendChild(myMessage);
-                            msg.value = "";
-                            var messageCover = document.getElementsByClassName(
-                                "message-cover"
-                            )[0];
-                            messageCover.scrollTop = messageCover.scrollHeight;
-                            //end of show my message in container
-
+                        var messageCover = document.getElementsByClassName(
+                            "message-cover"
+                        )[0];
+                        messageCover.appendChild(myMessage);
+                        msg.value = "";
+                        var messageCover = document.getElementsByClassName(
+                            "message-cover"
+                        )[0];
+                        messageCover.scrollTop = messageCover.scrollHeight;
+                        //end of show my message in container
                     })
                     .catch(err => console.log(err)); //end of ajax
             } //end of if frm

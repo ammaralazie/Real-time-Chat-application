@@ -49,6 +49,7 @@
 </style>
 <template>
     <div class="rootUser" style="display:flex;flex-direction: column;">
+        <!-- userlist -->
         <ul class="wepperUser" v-if="users">
             <li class="cards" v-for="user in users" :key="user.id">
                 <div class="card card-margin">
@@ -76,6 +77,7 @@
                 </div>
             </li>
         </ul>
+        <!-- userlist -->
         <div v-show="searchValue"></div>
         <paginate
             v-if="last_page > 1 && dontSearch"
@@ -100,7 +102,8 @@ export default {
         return {
             users: {},
             last_page: null,
-            dontSearch: true
+            dontSearch: true,
+            loading:true,
         };
     }, //end of data
     mounted() {
@@ -114,6 +117,7 @@ export default {
                 .then(res => {
                     this.last_page = res.data.last_page;
                     this.users = res.data.data;
+                    this.loading=false
                 })
                 .catch(err => {
                     console.log(err);

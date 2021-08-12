@@ -2218,6 +2218,8 @@ __webpack_require__.r(__webpack_exports__);
       var frm = $("#data");
 
       if (frm.serialize()) {
+        localStorage.setItem("sndUsr", this.AuthUsr.data.id);
+        localStorage.setItem("rcvUsr", this.info.rcv_usr.id);
         axios.post("/api/recive-message/", frm.serialize()).then(function (res) {
           //show my message in container
           var msg = document.querySelector("input[name=message]");
@@ -2677,12 +2679,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       users: {},
       last_page: null,
-      dontSearch: true
+      dontSearch: true,
+      loading: true
     };
   },
   //end of data
@@ -2697,6 +2702,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/api/users?page=" + page).then(function (res) {
         _this.last_page = res.data.last_page;
         _this.users = res.data.data;
+        _this.loading = false;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -62773,12 +62779,13 @@ var _require = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-e
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Echo["private"]("chat-prvate." + localStorage.getItem("sndUsr") + "." + localStorage.getItem("rcvUsr")).listen(".chat-p", function (e) {
-  console.log(e);
-});
 Vue.component("global-home", __webpack_require__(/*! ./components/GlobalComponent.vue */ "./resources/js/components/GlobalComponent.vue")["default"]);
 Vue.component("user-component", __webpack_require__(/*! ./components/UsersComponent.vue */ "./resources/js/components/UsersComponent.vue")["default"]);
 Vue.component('paginate', vuejs_paginate__WEBPACK_IMPORTED_MODULE_1___default.a);
+window.Echo["private"]("chat-prvate." + localStorage.getItem("sndUsr") + "." + localStorage.getItem("rcvUsr")).listen(".chat-p", function (e) {
+  console.log(localStorage.getItem("sndUsr"), " : ", localStorage.getItem("rcvUsr"));
+  console.log(e);
+});
 
 
 var app = new Vue({
@@ -62791,6 +62798,7 @@ var app = new Vue({
     };
   },
   //end of data
+  props: ['loading'],
   store: _vuex_vuex__WEBPACK_IMPORTED_MODULE_3__["default"],
   router: _routes_routes__WEBPACK_IMPORTED_MODULE_2__["default"],
   methods: {
@@ -62884,8 +62892,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "",
-  cluster: "mt1",
+  key: "f79cf090717b16ca94df",
+  cluster: "ap2",
   forceTLS: true
 });
 
@@ -63464,6 +63472,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     addToken: function addToken(state, auth_token) {
       if (auth_token.auth_token.state == "200") {
         state.auth_token = auth_token.auth_token;
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common.auth_token = auth_token.auth_token.token;
         /*  axios.defaults.headers.common.Authorization = "Bearer"+auth_token.auth_token.token; */
       } else {
