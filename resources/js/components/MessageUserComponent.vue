@@ -63,7 +63,9 @@ export default {
     data() {
         return {
             AuthUsr: this.$store.state.auth_token,
-            info: null
+            info: null,
+            recivephoto:null,
+            rcvMsg: [],
         };
     }, //end of data
 
@@ -82,10 +84,13 @@ export default {
                     .then(res => {
                         if (res.data.data) {
                             this.info = res.data.data;
-
+                            this.$store.dispatch("getsndUsrRcvUsr", {
+                                rcvUsr: this.info.rcv_usr.id,
+                                sndUsr: this.AuthUsr.data.id
+                            });
                             let usrId = this.AuthUsr.data.id;
                             let obj2 = [];
-                            let recivephoto = this.info.rcv_usr.img;
+                            this.recivephoto = this.info.rcv_usr.img;
                             //foreach to object and save messsage in array
                             $.each(this.info.all_msg, (ky, value) => {
                                 $.each(value, function(key, value) {
@@ -104,6 +109,7 @@ export default {
                             var bdy = document.body;
                             for (var i = 0; i < newobj.length; i++) {
                                 if (obj2[i].user_id == usrId) {
+                                    //this section for authorize user
                                     var myMessage = document.createElement(
                                         "div"
                                     );
@@ -118,6 +124,7 @@ export default {
                                     )[0];
                                     messageCover.appendChild(myMessage);
                                 } else {
+                                    //this for recive user
                                     var yourMessage = document.createElement(
                                         "div"
                                     );
@@ -127,7 +134,7 @@ export default {
                                     );
                                     youPhoto.classList = "your-photo";
                                     var photo = document.createElement("img");
-                                    photo.src = recivephoto;
+                                    photo.src = this.recivephoto;
                                     youPhoto.appendChild(photo);
                                     yourMessage.appendChild(youPhoto);
 
@@ -165,9 +172,6 @@ export default {
         senMessageUser() {
             var frm = $("#data");
             if (frm.serialize()) {
-                localStorage.setItem("sndUsr", this.AuthUsr.data.id);
-                localStorage.setItem("rcvUsr", this.info.rcv_usr.id);
-
                 axios
                     .post("/api/recive-message/", frm.serialize())
                     .then(res => {
@@ -193,6 +197,43 @@ export default {
                     .catch(err => console.log(err)); //end of ajax
             } //end of if frm
         } //end of senMessageUser
-    } //end of methods
+    }, //end of methods
+
+    computed: {
+        checkRcvMsg() {
+            if (this.$store.state.rcvMsg != null) {
+                return this.$store.state.rcvMsg;
+            }
+        } //end of checkRcvMsg
+    }, //end of computed
+
+    watch: {
+        checkRcvMsg(x) {
+            this.rcvMsg = x;
+            var yourMessage = document.createElement("div");
+            yourMessage.classList = "your-message";
+            var youPhoto = document.createElement("div");
+            youPhoto.classList = "your-photo";
+            var photo = document.createElement("img");
+            photo.src = this.recivephoto;
+            youPhoto.appendChild(photo);
+            yourMessage.appendChild(youPhoto);
+
+            var contentMessage = document.createElement("div");
+            contentMessage.classList = "content-your-message";
+            var createP = document.createElement("p");
+            createP.textContent = this.rcvMsg.msg;
+            contentMessage.appendChild(createP);
+
+            var messageCover = document.getElementsByClassName(
+                "message-cover"
+            )[0];
+            messageCover.appendChild(yourMessage);
+            yourMessage.appendChild(contentMessage);
+            messageCover.appendChild(yourMessage);
+
+            messageCover.scrollTop = messageCover.scrollHeight;
+        } //end of checkRcvMsg
+    } //end of watch
 };
 </script>

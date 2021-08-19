@@ -2132,7 +2132,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       AuthUsr: this.$store.state.auth_token,
-      info: null
+      info: null,
+      recivephoto: null,
+      rcvMsg: []
     };
   },
   //end of data
@@ -2152,9 +2154,15 @@ __webpack_require__.r(__webpack_exports__);
         }).then(function (res) {
           if (res.data.data) {
             _this.info = res.data.data;
+
+            _this.$store.dispatch("getsndUsrRcvUsr", {
+              rcvUsr: _this.info.rcv_usr.id,
+              sndUsr: _this.AuthUsr.data.id
+            });
+
             var usrId = _this.AuthUsr.data.id;
             var obj2 = [];
-            var recivephoto = _this.info.rcv_usr.img; //foreach to object and save messsage in array
+            _this.recivephoto = _this.info.rcv_usr.img; //foreach to object and save messsage in array
 
             $.each(_this.info.all_msg, function (ky, value) {
               $.each(value, function (key, value) {
@@ -2171,6 +2179,7 @@ __webpack_require__.r(__webpack_exports__);
 
             for (var i = 0; i < newobj.length; i++) {
               if (obj2[i].user_id == usrId) {
+                //this section for authorize user
                 var myMessage = document.createElement("div");
                 myMessage.classList = "my-message";
                 var createP = document.createElement("p");
@@ -2179,12 +2188,13 @@ __webpack_require__.r(__webpack_exports__);
                 var messageCover = document.getElementsByClassName("message-cover")[0];
                 messageCover.appendChild(myMessage);
               } else {
+                //this for recive user
                 var yourMessage = document.createElement("div");
                 yourMessage.classList = "your-message";
                 var youPhoto = document.createElement("div");
                 youPhoto.classList = "your-photo";
                 var photo = document.createElement("img");
-                photo.src = recivephoto;
+                photo.src = _this.recivephoto;
                 youPhoto.appendChild(photo);
                 yourMessage.appendChild(youPhoto);
                 var contentMessage = document.createElement("div");
@@ -2218,8 +2228,6 @@ __webpack_require__.r(__webpack_exports__);
       var frm = $("#data");
 
       if (frm.serialize()) {
-        localStorage.setItem("sndUsr", this.AuthUsr.data.id);
-        localStorage.setItem("rcvUsr", this.info.rcv_usr.id);
         axios.post("/api/recive-message/", frm.serialize()).then(function (res) {
           //show my message in container
           var msg = document.querySelector("input[name=message]");
@@ -2240,7 +2248,41 @@ __webpack_require__.r(__webpack_exports__);
 
     } //end of senMessageUser
 
-  } //end of methods
+  },
+  //end of methods
+  computed: {
+    checkRcvMsg: function checkRcvMsg() {
+      if (this.$store.state.rcvMsg != null) {
+        return this.$store.state.rcvMsg;
+      }
+    } //end of checkRcvMsg
+
+  },
+  //end of computed
+  watch: {
+    checkRcvMsg: function checkRcvMsg(x) {
+      this.rcvMsg = x;
+      var yourMessage = document.createElement("div");
+      yourMessage.classList = "your-message";
+      var youPhoto = document.createElement("div");
+      youPhoto.classList = "your-photo";
+      var photo = document.createElement("img");
+      photo.src = this.recivephoto;
+      youPhoto.appendChild(photo);
+      yourMessage.appendChild(youPhoto);
+      var contentMessage = document.createElement("div");
+      contentMessage.classList = "content-your-message";
+      var createP = document.createElement("p");
+      createP.textContent = this.rcvMsg.msg;
+      contentMessage.appendChild(createP);
+      var messageCover = document.getElementsByClassName("message-cover")[0];
+      messageCover.appendChild(yourMessage);
+      yourMessage.appendChild(contentMessage);
+      messageCover.appendChild(yourMessage);
+      messageCover.scrollTop = messageCover.scrollHeight;
+    } //end of checkRcvMsg
+
+  } //end of watch
 
 });
 
@@ -62774,18 +62816,11 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
-var _require = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js"),
-    Echo = _require["default"];
-
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 Vue.component("global-home", __webpack_require__(/*! ./components/GlobalComponent.vue */ "./resources/js/components/GlobalComponent.vue")["default"]);
 Vue.component("user-component", __webpack_require__(/*! ./components/UsersComponent.vue */ "./resources/js/components/UsersComponent.vue")["default"]);
-Vue.component('paginate', vuejs_paginate__WEBPACK_IMPORTED_MODULE_1___default.a);
-window.Echo["private"]("chat-prvate." + localStorage.getItem("sndUsr") + "." + localStorage.getItem("rcvUsr")).listen(".chat-p", function (e) {
-  console.log(localStorage.getItem("sndUsr"), " : ", localStorage.getItem("rcvUsr"));
-  console.log(e);
-});
+Vue.component("paginate", vuejs_paginate__WEBPACK_IMPORTED_MODULE_1___default.a);
 
 
 var app = new Vue({
@@ -62798,7 +62833,7 @@ var app = new Vue({
     };
   },
   //end of data
-  props: ['loading'],
+  props: ["loading"],
   store: _vuex_vuex__WEBPACK_IMPORTED_MODULE_3__["default"],
   router: _routes_routes__WEBPACK_IMPORTED_MODULE_2__["default"],
   methods: {
@@ -62807,23 +62842,23 @@ var app = new Vue({
       profileList.classList.toggle("show-list");
     },
     showInputSearch: function showInputSearch() {
-      console.log('user :', this.user);
+      console.log("user :", this.user);
       var inputSearc = document.querySelector("input[type=search]");
       inputSearc.classList.toggle("showInputSearch");
       inputSearc.style.border = "1px solid #000";
     },
     logout: function logout() {
       if (this.$store.getters.checkToken) {
-        this.$store.dispatch('logout');
-        _routes_routes__WEBPACK_IMPORTED_MODULE_2__["default"].push('/login');
+        this.$store.dispatch("logout");
+        _routes_routes__WEBPACK_IMPORTED_MODULE_2__["default"].push("/login");
       }
     }
   },
   //end of methods
   computed: {
     findState: function findState() {
-      console.log(localStorage.getItem('isSearching'));
-      return localStorage.getItem('isSearching');
+      console.log(localStorage.getItem("isSearching"));
+      return localStorage.getItem("isSearching");
     },
     hideNavBar: function hideNavBar() {
       var navBar = document.querySelector("nav"); //this section for check to url and then hidden the navbar
@@ -62838,7 +62873,7 @@ var app = new Vue({
     //we will make redrict after login or register
     homeRedirect: function homeRedirect() {
       if (this.$store.getters.checkToken) {
-        _routes_routes__WEBPACK_IMPORTED_MODULE_2__["default"].push('/');
+        _routes_routes__WEBPACK_IMPORTED_MODULE_2__["default"].push("/");
       }
     },
     loginRedirect: function loginRedirect() {
@@ -62852,8 +62887,14 @@ var app = new Vue({
     users: function users() {
       this.user = this.$store.state.auth_token;
       return this.user;
-    }
+    },
+    listenMessage: function listenMessage() {
+      //this section to listen of message
+      console.log("work ...");
+    } //end of liten meassge
+
   },
+  //end of computed
   watch: {
     searchUser: function searchUser(x) {
       this.$store.dispatch("seachVlue", x);
@@ -62892,10 +62933,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "f79cf090717b16ca94df",
+  key: "b765161f8b162bdd767f",
   cluster: "ap2",
-  forceTLS: true
+  encrypted: true
 });
+console.log("bootstrap is work ...");
+console.log(window.Echo);
 
 /***/ }),
 
@@ -63430,13 +63473,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+__webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
     searchValue: {},
     auth_token: null,
     err_token: null,
-    redirect: ""
+    redirect: "",
+    rcvMsg: null
   },
   //end of state
   getters: {
@@ -63472,9 +63520,11 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     addToken: function addToken(state, auth_token) {
       if (auth_token.auth_token.state == "200") {
         state.auth_token = auth_token.auth_token;
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common.auth_token = auth_token.auth_token.token;
-        /*  axios.defaults.headers.common.Authorization = "Bearer"+auth_token.auth_token.token; */
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common.Authorization = "Bearer" + auth_token.auth_token.token; //to set token on headers of lravel-echo
+
+        window.Echo.connector.pusher.config.auth.headers.auth_token = auth_token.auth_token.token;
       } else {
         state.err_token = auth_token.auth_token.err;
       }
@@ -63483,7 +63533,19 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     removeToken: function removeToken(state) {
       state.auth_token = null;
       delete axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Authorization"];
-    } //end of removeToken
+      delete axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["auth_token"]; //to set token on headers of lravel-echo
+
+      delete window.Echo.connector.pusher.config.auth.headers["auth_token"];
+    },
+    //end of removeToken
+    listenMessage: function listenMessage(state, value) {
+      var sndUsr = value.sndUsr;
+      var rcvUsr = value.rcvUsr;
+      window.Echo["private"]("chat-prvate." + sndUsr + "." + rcvUsr).listen(".chat-p", function (e) {
+        console.log(e);
+        state.rcvMsg = e;
+      });
+    } //end of listenMessage
 
   },
   //end of mutations
@@ -63541,12 +63603,20 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     logout: function logout(_ref4) {
       var commit = _ref4.commit;
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/logout").then(function (res) {
-        commit('removeToken');
+        commit("removeToken");
         /* window.location.href="/login" */
       })["catch"](function (err) {
         console.log(err);
       });
-    } //end of logout
+    },
+    //end of logout
+    getsndUsrRcvUsr: function getsndUsrRcvUsr(_ref5, payload) {
+      var commit = _ref5.commit;
+
+      if (payload) {
+        commit("listenMessage", payload);
+      }
+    } //end of getsndUsrRcvUsr
 
   } //end of actions
 

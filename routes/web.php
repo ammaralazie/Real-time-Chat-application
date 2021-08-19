@@ -16,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
-
+/* Route::post('/broadcast',function (Request $request){
+    $pusher = new Pusher\Pusher(
+        env('PUSHER_APP_KEY'),
+        env('PUSHER_APP_SECRET'),
+        env('PUSHER_APP_ID'));
+      return $pusher->socket_auth($request->request->get('channel_name'),$request->request->get('socket_id'));
+    }
+); */
