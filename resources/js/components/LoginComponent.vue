@@ -1,3 +1,4 @@
+
 <template>
     <!-- container -->
     <div class="container">
@@ -53,6 +54,12 @@
                     </button>
                 </form>
                 <!-- form -->
+
+                <!-- forgot passsword -->
+                <div class="forgot-password">
+                    <router-link to="/forgot">forgot password?</router-link>
+                </div>
+                <!-- /forgot password -->
             </div>
             <!-- login -->
         </div>
@@ -89,7 +96,8 @@ export default {
         isValid() {
             if (
                 this.identfy.length > 0 &&
-                this.password.length > 0 && this.password.length >= 8
+                this.password.length > 0 &&
+                this.password.length >= 8
             ) {
                 return "Ok";
             }

@@ -6,15 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $fillable=['user_id','content','state'];
-    public function sendUser(){
+    protected $fillable = ['user_id', 'content', 'state'];
+
+    public function sendUser()
+    {
 
         return $this->belongsTo(User::class);
+    } //end of sendUser
 
-    }//end of sendUser
+    public function reciveUser()
+    {
 
-    public function reciveUser(){
         return $this->hasOne(ReciveMessage::class);
-    }//end of reciveUser
+    } //end of reciveUser
 
 }
