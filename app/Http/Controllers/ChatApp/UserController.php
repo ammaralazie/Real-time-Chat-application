@@ -254,8 +254,8 @@ class UserController extends Controller
             $user->password=bcrypt($request->password);
             $user->save();
 
-            $email=PasswordReset::where('token',$request->token)->get();
-            foreach($email as $eml){
+            $em=PasswordReset::where('token',$email->email)->get();
+            foreach($em as $eml){
                 $eml->delete();
             };
 
