@@ -112,6 +112,9 @@ export default {
 
     methods: {
         getUser(page=1) {
+            if(page == 'undefined'){
+                page=1
+            }
             axios
                 .get("/api/users?page=" + page)
                 .then(res => {
