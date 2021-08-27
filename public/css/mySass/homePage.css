@@ -13,6 +13,7 @@ html {
 }
 
 /* end of ipad mixin */
+/* for  */
 /* end of mobile */
 nav .wepper .main-list .showList .profile-list li, nav .wepper .main-list .showList .show-list-setting-profile, nav .wepper .main-list .showList, nav .wepper .main-list, nav .wepper, nav {
   display: flex;
@@ -137,7 +138,7 @@ nav .wepper .search-buuton input[type=search]:focus {
     left: 36%;
   }
 }
-@media screen and (max-width: 411px) {
+@media screen and (max-width: 414px) {
   nav .wepper .search-buuton .search-icon {
     left: 40%;
   }
@@ -225,7 +226,7 @@ nav .wepper .main-list .showList .profile-list.show-list {
     left: 71%;
   }
 }
-@media screen and (max-width: 411px) {
+@media screen and (max-width: 414px) {
   nav .wepper .main-list .showList .profile-list.show-list {
     left: 45%;
   }
@@ -276,6 +277,8 @@ nav .wepper .main-list .showList .show-login:hover a, nav .wepper .main-list .sh
 /* /nav */
 /* root user */
 .rootUser {
+  width: 80%;
+  align-items: center;
   /* UserComponent */
   /* /UserComponent */
 }
@@ -291,7 +294,12 @@ nav .wepper .main-list .showList .show-login:hover a, nav .wepper .main-list .sh
     padding: 2px;
   }
 }
-@media screen and (max-width: 411px) {
+@media screen and (max-width: 768px) {
+  .rootUser .wepperUser {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 414px) {
   .rootUser .wepperUser {
     grid-template-columns: 1fr;
   }

@@ -5,8 +5,14 @@
 };
 /* end of ipad mixin */
 
+/* for  */
+@mixin ipad768 {
+    @media screen and (max-width:768px){
+        @content
+    }
+};
 @mixin mobile {
-    @media screen and (max-width:411px){
+    @media screen and (max-width:414px){
         @content
     }
 };

@@ -286,6 +286,8 @@ nav{
 
 /* root user */
 .rootUser{
+    width: 80%;
+    align-items: center;
     /* UserComponent */
 .wepperUser{
     width: 100%;
@@ -294,6 +296,9 @@ nav{
     @include ipad{
         grid-template-columns:1fr 1fr 1fr;
         padding: 2px;
+    }
+    @include ipad768{
+        grid-template-columns:1fr 1fr;
     }
     @include mobile{
         grid-template-columns:1fr;
