@@ -174,7 +174,6 @@ class UserController extends Controller
     }else{
         $obj = User::latest()->paginate(8);
     }//end of else
-
         return response()->json($obj);
     } //end of get User
 

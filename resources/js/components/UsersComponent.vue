@@ -111,7 +111,7 @@ export default {
     }, //end of mounted
 
     methods: {
-        getUser(page) {
+        getUser(page=1) {
             axios
                 .get("/api/users?page=" + page)
                 .then(res => {

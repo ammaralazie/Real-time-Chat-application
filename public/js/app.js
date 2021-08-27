@@ -2857,9 +2857,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   //end of mounted
   methods: {
-    getUser: function getUser(page) {
+    getUser: function getUser() {
       var _this = this;
 
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get("/api/users?page=" + page).then(function (res) {
         _this.last_page = res.data.last_page;
         _this.users = res.data.data;
