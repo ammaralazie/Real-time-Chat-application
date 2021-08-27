@@ -63487,7 +63487,6 @@ var app = new Vue({
   //end of methods
   computed: {
     findState: function findState() {
-      console.log(localStorage.getItem("isSearching"));
       return localStorage.getItem("isSearching");
     },
     hideNavBar: function hideNavBar() {
@@ -63568,7 +63567,6 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   encrypted: true
 });
 console.log("bootstrap is work ...");
-console.log(window.Echo);
 
 /***/ }),
 

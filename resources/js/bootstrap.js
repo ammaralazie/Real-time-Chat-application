@@ -21,4 +21,3 @@ window.Echo = new Echo({
     encrypted: true,
 });
 console.log("bootstrap is work ...")
-console.log(window.Echo)

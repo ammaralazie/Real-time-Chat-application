@@ -52,7 +52,6 @@ const app = new Vue({
     }, //end of methods
     computed: {
         findState() {
-            console.log(localStorage.getItem("isSearching"));
             return localStorage.getItem("isSearching");
         },
         hideNavBar() {
