@@ -19,7 +19,6 @@ class ChatsController extends Controller
     }
     public function messages_users()
     {
-//this from ammaralazie2
         try {
             $authUser = Auth::guard('api')->user();
 
