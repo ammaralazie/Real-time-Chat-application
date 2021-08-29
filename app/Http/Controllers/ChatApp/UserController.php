@@ -171,7 +171,7 @@ class UserController extends Controller
     //this function to returen all user
     public function getUser()
     { if (Auth::guard('api')->user()){
-        $obj = User::where("id","!=",Auth::guard('api')->user()->id)->latest()->paginate(8);
+        $obj = [];
     }else{
         $obj = User::latest()->paginate(8);
     }//end of else
