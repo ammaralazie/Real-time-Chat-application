@@ -112,7 +112,6 @@ export default {
 
     methods: {
         getUser(page=1) {
-            console.log('page=',page)
             axios
                 .get("/api/users?page=" + page)
                 .then(res => {

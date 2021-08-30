@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Lcobucci\JWT\Token;
+use SebastianBergmann\Environment\Console;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Validator;
 use Str;
@@ -43,6 +44,7 @@ class UserController extends Controller
     public function signup(Request $request)
     {
 
+        //this from prch-cht
         $vldate = Validator::make($request->all(), [
             "username" => ['required', 'string', 'unique:users,username'],
             "email" => ['required', 'email', 'unique:users,email'],
@@ -170,7 +172,7 @@ class UserController extends Controller
     //this function to returen all user
     public function getUser()
     { if (Auth::guard('api')->user()){
-        $obj = User::where("id","<>",Auth::guard('api')->user()->id)->latest()->paginate(8);
+        $obj = [];
     }else{
         $obj = User::latest()->paginate(8);
     }//end of else
