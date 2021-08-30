@@ -44,7 +44,6 @@ class UserController extends Controller
     public function signup(Request $request)
     {
 
-        //delte from prch-cht
         $vldate = Validator::make($request->all(), [
             "username" => ['required', 'string', 'unique:users,username'],
             "email" => ['required', 'email', 'unique:users,email'],
