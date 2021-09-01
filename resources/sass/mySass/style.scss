@@ -27,42 +27,72 @@
         position: relative;
 
         /* inputs */
-        input{
+        input[name=identfy]{
             width: 60%;
             height: 40px;
             color: $dark;
             box-shadow: 1px 1px 2px $dark;
             border-radius: 3px;
             padding: 0 10px;
+            @include ipad{
+                width: 80%;
+            }
             &:focus{
                 outline:1px solid $green ;
             }
             &:not(:first-child){
                 margin-top: 10px;
             }
-            @include ipad{
-                width: 80%;
-            }
+
         }
         /* end of inputs */
 
-        /* font awesome */
-        .fa-eye{
-            position: absolute;
-            right: 55px;
-            top: 22px;
-            transform: translate(-122px,155px);
-            cursor: pointer;
-            color: rgb(49 49 49);
+        /* password-eye */
+        .password-eye{
+            position: relative;
+            width: 60%;
+            height: 40px;
+            color: $dark;
+            box-shadow: 1px 1px 2px $dark;
+            border-radius: 3px;
             @include ipad{
-                transform: none;
-                transform: translateY(155px);
+                width: 80%;
             }
-            @include mobile{
-               right: 40px;;
+            /* font awesome */
+            .fa-eye{
+                position: absolute;
+                right: 10px;
+                top: 8px;
+                cursor: pointer;
+                color: rgb(49 49 49);
+                @include ipad{
+                    transform: none;
+                    right: 10px;
+                }
+                @include mobile{
+                right: 40px;;
+                }
+            }
+            /* font awesome */
+            input[name=password]{
+                width: 60%;
+                height: 40px;
+                color: $dark;
+                box-shadow: 1px 1px 2px $dark;
+                border-radius: 3px;
+                padding: 0 10px;
+                width: 100%;
+                &:focus{
+                    width: 100%;
+                }
+                @include ipad{
+                    width: 100%;
+                }
             }
         }
-        /* font awesome */
+        /* /password-eye */
+
+
 
         /* button */
         button{
@@ -73,6 +103,7 @@
             cursor: pointer;
             border-radius: 3px;
             margin-top: 30px;
+            padding: 0px;
             &:hover{
                 background: #000;
             }

@@ -6,12 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Mail\resetPasswordMail;
 use App\PasswordReset;
 use App\User;
-use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Lcobucci\JWT\Token;
-use SebastianBergmann\Environment\Console;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Validator;
 use Str;
@@ -171,7 +168,8 @@ class UserController extends Controller
     //this function to returen all user
     public function getUser()
     { if (Auth::guard('api')->user()){
-        $obj = [];
+        $user=Auth::guard('api')->user();
+        $obj =  User::where('id','!=',$user->id)->latest()->paginate(8);
     }else{
         $obj = User::latest()->paginate(8);
     }//end of else

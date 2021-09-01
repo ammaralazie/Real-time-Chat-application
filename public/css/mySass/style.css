@@ -13,6 +13,7 @@ html {
 }
 
 /* end of ipad mixin */
+/* for  */
 /* end of mobile */
 /* container */
 .container {
@@ -33,7 +34,7 @@ html {
   border-radius: 4px;
   position: relative;
 }
-@media screen and (max-width: 411px) {
+@media screen and (max-width: 414px) {
   .container .wepper {
     width: 80%;
   }
@@ -41,6 +42,7 @@ html {
 
 /* end of container */
 /* end of ipad mixin */
+/* for  */
 /* end of mobile */
 .login form[method=post] {
   display: flex;
@@ -64,14 +66,14 @@ html {
   position: relative;
   /* inputs */
   /* end of inputs */
-  /* font awesome */
-  /* font awesome */
+  /* password-eye */
+  /* /password-eye */
   /* button */
   /* end of button */
   /* STRONG */
   /* END OF STRONG */
 }
-.login form[method=post] input {
+.login form[method=post] input[name=identfy] {
   width: 60%;
   height: 40px;
   color: #313131;
@@ -79,34 +81,65 @@ html {
   border-radius: 3px;
   padding: 0 10px;
 }
-.login form[method=post] input:focus {
-  outline: 1px solid #21bd5d;
-}
-.login form[method=post] input:not(:first-child) {
-  margin-top: 10px;
-}
 @media screen and (max-width: 1024px) {
-  .login form[method=post] input {
+  .login form[method=post] input[name=identfy] {
     width: 80%;
   }
 }
-.login form[method=post] .fa-eye {
+.login form[method=post] input[name=identfy]:focus {
+  outline: 1px solid #21bd5d;
+}
+.login form[method=post] input[name=identfy]:not(:first-child) {
+  margin-top: 10px;
+}
+.login form[method=post] .password-eye {
+  position: relative;
+  width: 60%;
+  height: 40px;
+  color: #313131;
+  box-shadow: 1px 1px 2px #313131;
+  border-radius: 3px;
+  /* font awesome */
+  /* font awesome */
+}
+@media screen and (max-width: 1024px) {
+  .login form[method=post] .password-eye {
+    width: 80%;
+  }
+}
+.login form[method=post] .password-eye .fa-eye {
   position: absolute;
-  right: 55px;
-  top: 22px;
-  transform: translate(-122px, 155px);
+  right: 10px;
+  top: 8px;
   cursor: pointer;
   color: #313131;
 }
 @media screen and (max-width: 1024px) {
-  .login form[method=post] .fa-eye {
+  .login form[method=post] .password-eye .fa-eye {
     transform: none;
-    transform: translateY(155px);
+    right: 10px;
   }
 }
-@media screen and (max-width: 411px) {
-  .login form[method=post] .fa-eye {
+@media screen and (max-width: 414px) {
+  .login form[method=post] .password-eye .fa-eye {
     right: 40px;
+  }
+}
+.login form[method=post] .password-eye input[name=password] {
+  width: 60%;
+  height: 40px;
+  color: #313131;
+  box-shadow: 1px 1px 2px #313131;
+  border-radius: 3px;
+  padding: 0 10px;
+  width: 100%;
+}
+.login form[method=post] .password-eye input[name=password]:focus {
+  width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  .login form[method=post] .password-eye input[name=password] {
+    width: 100%;
   }
 }
 .login form[method=post] button {
@@ -117,6 +150,7 @@ html {
   cursor: pointer;
   border-radius: 3px;
   margin-top: 30px;
+  padding: 0px;
 }
 .login form[method=post] button:hover {
   background: #000;
@@ -125,7 +159,7 @@ html {
   font-size: 11px;
   color: #bd2a10;
 }
-@media screen and (max-width: 411px) {
+@media screen and (max-width: 414px) {
   .login form[method=post] strong {
     font-size: 8px;
   }

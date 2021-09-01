@@ -1,4 +1,3 @@
-
 <template>
     <!-- container -->
     <div class="container">
@@ -30,20 +29,23 @@
                         v-text="checkUsername"
                         class="form-text text-muted"
                     ></small>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="password"
-                        required
-                        id=""
-                        v-model="password"
-                    />
+                    <div class="password-eye">
+                        <i class="far fa-eye" @click="showPssword"></i>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="password"
+                            required
+                            id=""
+                            v-model="password"
+                        />
+                    </div>
+
                     <small
                         id="emailHelp"
                         v-text="checkPassword"
                         class="form-text text-muted"
                     ></small>
-                    <i class="far fa-eye" @click="showPssword"></i>
                     <button
                         :disabled="!isValid"
                         class="button-form btn btn-primary"
