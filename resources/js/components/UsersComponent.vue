@@ -62,10 +62,16 @@
                             <hr />
                             <div
                                 class="widget-49-meeting-action"
-                                style="    transform: translateX(30px);"
+                                style="
+                                    width: 100%;
+                                    height: 100%;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                "
                             >
                                 <router-link
-                                    :to="'message/'+ user.username"
+                                    :to="'message/' + user.username"
                                     class="btn btn-sm btn-primary"
                                     >Send message
                                     <img
@@ -103,7 +109,7 @@ export default {
             users: {},
             last_page: null,
             dontSearch: true,
-            loading:true,
+            loading: true
         };
     }, //end of data
     mounted() {
@@ -117,7 +123,8 @@ export default {
                 .then(res => {
                     this.last_page = res.data.last_page;
                     this.users = res.data.data;
-                    this.loading=false
+                    this.loading = false;
+
                 })
                 .catch(err => {
                     console.log(err);

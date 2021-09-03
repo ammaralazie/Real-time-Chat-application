@@ -1995,6 +1995,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2744,6 +2745,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -45833,42 +45840,44 @@ var render = function() {
             domProps: { textContent: _vm._s(_vm.checkUsername) }
           }),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.password,
-                expression: "password"
-              }
-            ],
-            attrs: {
-              type: "password",
-              name: "password",
-              placeholder: "password",
-              required: "",
-              id: ""
-            },
-            domProps: { value: _vm.password },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "password-eye" }, [
+            _c("i", {
+              staticClass: "far fa-eye",
+              on: { click: _vm.showPssword }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.password,
+                  expression: "password"
                 }
-                _vm.password = $event.target.value
+              ],
+              attrs: {
+                type: "password",
+                name: "password",
+                placeholder: "password",
+                required: "",
+                id: ""
+              },
+              domProps: { value: _vm.password },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.password = $event.target.value
+                }
               }
-            }
-          }),
+            })
+          ]),
           _vm._v(" "),
           _c("small", {
             staticClass: "form-text text-muted",
             attrs: { id: "emailHelp" },
             domProps: { textContent: _vm._s(_vm.checkPassword) }
-          }),
-          _vm._v(" "),
-          _c("i", {
-            staticClass: "far fa-eye",
-            on: { click: _vm.showPssword }
           }),
           _vm._v(" "),
           _c(
@@ -45884,19 +45893,19 @@ var render = function() {
               }
             },
             [_vm._v("\n                    Login\n                ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "forgot-password" },
+            [
+              _c("router-link", { attrs: { to: "/forgot" } }, [
+                _vm._v("forgot password?")
+              ])
+            ],
+            1
           )
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "forgot-password" },
-          [
-            _c("router-link", { attrs: { to: "/forgot" } }, [
-              _vm._v("forgot password?")
-            ])
-          ],
-          1
-        )
+        ])
       ])
     ])
   ])
@@ -46537,7 +46546,13 @@ var render = function() {
                         "div",
                         {
                           staticClass: "widget-49-meeting-action",
-                          staticStyle: { transform: "translateX(30px)" }
+                          staticStyle: {
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            "justify-content": "center",
+                            "align-items": "center"
+                          }
                         },
                         [
                           _c(
