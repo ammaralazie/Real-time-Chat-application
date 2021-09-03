@@ -54,14 +54,13 @@
                     >
                         Login
                     </button>
+                    <!-- forgot passsword -->
+                    <div class="forgot-password">
+                        <router-link to="/forgot">forgot password?</router-link>
+                    </div>
+                    <!-- /forgot password -->
                 </form>
                 <!-- form -->
-
-                <!-- forgot passsword -->
-                <div class="forgot-password">
-                    <router-link to="/forgot">forgot password?</router-link>
-                </div>
-                <!-- /forgot password -->
             </div>
             <!-- login -->
         </div>

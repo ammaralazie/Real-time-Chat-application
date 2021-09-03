@@ -70,6 +70,8 @@ html {
   /* /password-eye */
   /* button */
   /* end of button */
+  /* forgot-password */
+  /* /forgot-pasword */
   /* STRONG */
   /* END OF STRONG */
 }
@@ -154,6 +156,20 @@ html {
 }
 .login form[method=post] button:hover {
   background: #000;
+}
+.login form[method=post] .forgot-password {
+  width: 80%;
+  padding: 10px;
+  margin-top: 10px;
+}
+.login form[method=post] .forgot-password a {
+  text-decoration: none;
+  color: #313131;
+  transition: color 0.3s ease;
+  font-size: 15px;
+}
+.login form[method=post] .forgot-password a:hover {
+  color: #21bd5d;
 }
 .login form[method=post] strong {
   font-size: 11px;

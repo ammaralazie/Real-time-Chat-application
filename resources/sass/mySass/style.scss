@@ -110,6 +110,24 @@
         }
         /* end of button */
 
+
+        /* forgot-password */
+        .forgot-password {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+            a{
+                text-decoration: none;
+                color: $dark;
+                transition: color .3s ease;
+                font-size: 15px;
+                &:hover{
+                    color: $green;
+                }
+            }
+        }
+        /* /forgot-pasword */
+
         /* STRONG */
         strong{
             font-size: 11px;
